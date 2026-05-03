@@ -1,63 +1,1063 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khadija El Merahy — Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --noir: #0a0a0a;
+    --noir-soft: #111111;
+    --noir-mid: #1a1a1a;
+    --surface: #141414;
+    --creme: #f0ebe2;
+    --creme-dim: #c8c0b4;
+    --bordeaux: #7a2c3e;
+    --bordeaux-light: #9e3a50;
+    --bordeaux-dim: #4a1a26;
+    --or: #c9a96e;
+    --or-dim: #8a6f42;
+    --muted: #5a5550;
+    --line: rgba(240,235,226,0.08);
+    --line-strong: rgba(240,235,226,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--noir);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 8px; height: 8px;
+    background: var(--bordeaux-light);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 32px; height: 32px;
+    border: 1px solid rgba(158,58,80,0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.18s ease, width 0.3s ease, height 0.3s ease;
+  }
+  body:hover .cursor { opacity: 1; }
+  a:hover ~ .cursor, button:hover ~ .cursor { transform: translate(-50%, -50%) scale(2.5); }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 2px; }
+  ::-webkit-scrollbar-track { background: var(--noir); }
+  ::-webkit-scrollbar-thumb { background: var(--bordeaux); }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.8rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.4s, background 0.4s, backdrop-filter 0.4s;
+  }
+  nav.scrolled {
+    border-color: var(--line);
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--creme);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--bordeaux-light); font-style: italic; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--creme-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--bordeaux-light);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--creme); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* Hero */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-line {
+    position: absolute;
+    top: 0; right: 12rem;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--line-strong) 30%, var(--line-strong) 70%, transparent);
+  }
+  .hero-bg-line2 {
+    position: absolute;
+    top: 0; left: 50%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--line) 40%, var(--line) 60%, transparent);
+  }
+  .hero-content { max-width: 900px; position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bordeaux-light);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 9vw, 8.5rem);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    color: var(--creme);
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.4s forwards;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--bordeaux-light);
+  }
+  .hero-tagline {
+    margin-top: 2.5rem;
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--creme-dim);
+    max-width: 480px;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.6s forwards;
+  }
+  .hero-cta {
+    margin-top: 3.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.8s forwards;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 0.9rem 2.5rem;
+    border: 1px solid var(--bordeaux);
+    background: var(--bordeaux);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, border-color 0.3s;
+    cursor: none;
+  }
+  .btn-primary:hover { background: var(--bordeaux-light); border-color: var(--bordeaux-light); }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--creme-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+    cursor: none;
+  }
+  .btn-ghost:hover { color: var(--creme); }
+  .btn-ghost svg { transition: transform 0.3s; }
+  .btn-ghost:hover svg { transform: translateX(4px); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 3rem; right: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    opacity: 0;
+    animation: fadeIn 1s ease 1.2s forwards;
+  }
+  .hero-scroll span {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    writing-mode: vertical-rl;
+  }
+  .scroll-line {
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, var(--bordeaux), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* Sections common */
+  section { padding: 7rem 4rem; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+  }
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--bordeaux-light);
+    letter-spacing: 0.2em;
+    opacity: 0.7;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--creme);
+  }
+  .section-title em { font-style: italic; color: var(--bordeaux-light); }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    max-width: 200px;
+    margin-left: auto;
+  }
+
+  /* About */
+  #about { background: var(--noir-soft); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--creme-dim);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+  .about-text p strong {
+    color: var(--creme);
+    font-weight: 400;
+  }
+  .about-text p em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--bordeaux-light);
+    font-size: 1.1em;
+  }
+  .about-aside {}
+  .aside-block {
+    border-left: 1px solid var(--line-strong);
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+  }
+  .aside-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--bordeaux-light);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+  .aside-content {
+    font-size: 0.85rem;
+    color: var(--creme-dim);
+    line-height: 1.8;
+  }
+  .aside-content a {
+    color: var(--creme-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .aside-content a:hover { color: var(--creme); }
+  .lang-badges { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .lang-badge {
+    padding: 0.35rem 1rem;
+    border: 1px solid var(--line-strong);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--creme-dim);
+  }
+
+  /* Skills */
+  #skills { background: var(--noir); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+  .skill-category {
+    padding: 2.5rem 3rem;
+    border: 1px solid var(--line);
+    position: relative;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .skill-category:hover { border-color: var(--bordeaux-dim); background: rgba(122,44,62,0.04); }
+  .skill-cat-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bordeaux-light);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .skill-tag {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--creme-dim);
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--line-strong);
+    letter-spacing: 0.05em;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .skill-tag:hover { color: var(--creme); border-color: rgba(158,58,80,0.4); }
+
+  /* Projects */
+  #projects { background: var(--noir-soft); }
+  .projects-list { display: flex; flex-direction: column; gap: 0; }
+  .project-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: start;
+    gap: 2rem;
+    padding: 2.8rem 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    transition: background 0.3s;
+    cursor: none;
+    position: relative;
+  }
+  .project-item::before {
+    content: '';
+    position: absolute;
+    left: -4rem; right: -4rem; top: 0; bottom: 0;
+    background: rgba(122,44,62,0.03);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-item:hover::before { opacity: 1; }
+  .project-item:first-child { border-top: 1px solid var(--line); }
+  .project-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--bordeaux-light);
+    opacity: 0.6;
+    padding-top: 0.3rem;
+  }
+  .project-body {}
+  .project-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: var(--creme);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.6rem;
+    transition: color 0.3s;
+  }
+  .project-item:hover .project-name { color: var(--bordeaux-light); }
+  .project-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 550px;
+    font-weight: 300;
+  }
+  .project-techs {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .project-tech {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    color: var(--bordeaux-light);
+    border: 1px solid var(--bordeaux-dim);
+    padding: 0.25rem 0.7rem;
+    opacity: 0.85;
+  }
+  .project-arrow {
+    padding-top: 0.4rem;
+    color: var(--muted);
+    transition: color 0.3s, transform 0.3s;
+  }
+  .project-item:hover .project-arrow { color: var(--bordeaux-light); transform: translate(4px, -4px); }
+
+  /* Experience */
+  #experience { background: var(--noir); }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 4rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .exp-item:first-child { border-top: 1px solid var(--line); }
+  .exp-meta {}
+  .exp-company {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bordeaux-light);
+    margin-bottom: 0.4rem;
+    opacity: 0.9;
+  }
+  .exp-date {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+  .exp-content {}
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--creme);
+    margin-bottom: 1rem;
+  }
+  .exp-points {
+    list-style: none;
+  }
+  .exp-points li {
+    font-size: 0.82rem;
+    color: var(--creme-dim);
+    line-height: 1.8;
+    padding: 0.3rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+    font-weight: 300;
+  }
+  .exp-points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--bordeaux-light);
+    opacity: 0.6;
+  }
+
+  /* Certifications */
+  #certifications { background: var(--noir-soft); }
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .cert-card {
+    border: 1px solid var(--line);
+    padding: 2rem;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.3s, background 0.3s;
+    cursor: none;
+  }
+  .cert-card:hover { border-color: var(--bordeaux-dim); background: rgba(122,44,62,0.04); }
+  .cert-platform {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bordeaux-light);
+    opacity: 0.8;
+    margin-bottom: 0.8rem;
+  }
+  .cert-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--creme);
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+  .cert-link-text {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s;
+  }
+  .cert-card:hover .cert-link-text { color: var(--creme-dim); }
+
+  /* Contact */
+  #contact { background: var(--noir); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .contact-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    line-height: 1.35;
+    color: var(--creme);
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.01em;
+  }
+  .contact-intro em { font-style: italic; color: var(--bordeaux-light); }
+  .contact-sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 0; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    transition: padding-left 0.3s;
+    cursor: none;
+  }
+  .contact-link:first-child { border-top: 1px solid var(--line); }
+  .contact-link:hover { padding-left: 0.5rem; }
+  .contact-link-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .contact-link-value {
+    font-size: 0.82rem;
+    color: var(--creme-dim);
+    transition: color 0.3s;
+  }
+  .contact-link:hover .contact-link-value { color: var(--bordeaux-light); }
+  .contact-right {}
+  .contact-availability {
+    border: 1px solid var(--bordeaux-dim);
+    padding: 2rem 2.5rem;
+    background: rgba(122,44,62,0.04);
+    margin-bottom: 2rem;
+  }
+  .availability-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--bordeaux-light);
+    display: inline-block;
+    margin-right: 0.6rem;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .availability-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--bordeaux-light);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+  }
+  .availability-text {
+    font-size: 0.82rem;
+    color: var(--creme-dim);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .contact-education {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .edu-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .edu-text {
+    font-size: 0.82rem;
+    color: var(--creme-dim);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* Footer */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+  .footer-copy {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    opacity: 0.5;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(158,58,80,0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(158,58,80,0); }
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    nav { padding: 1.5rem 2rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 2rem; }
+    #hero { padding: 0 2rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .certs-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 1rem; }
+    .project-item { grid-template-columns: 60px 1fr; }
+    .project-arrow { display: none; }
+    .hero-scroll { display: none; }
+    footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Mon Portfolio</div>
-            <ul class="nav-links">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#propos">À propos</a></li>
-                <li><a href="#projets">Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section id="accueil" class="hero">
-            <h1>Bonjour, je suis <span class="highlight">[Ton Nom]</span></h1>
-            <p>Développeur Web Passionné</p>
-            <a href="#projets" class="btn">Voir mes projets</a>
-        </section>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
 
-        <section id="propos">
-            <h2>À propos de moi</h2>
-            <p>Je suis un développeur web créatif. J'aime concevoir des sites web élégants et fonctionnels. Bienvenue sur mon espace personnel !</p>
-        </section>
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">K<span>.</span>El Merahy</a>
+  <ul class="nav-links">
+    <li><a href="#about">Profil</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-        <section id="projets">
-            <h2>Mes Projets</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>Projet 1</h3>
-                    <p>Description courte de ton premier super projet. Les technologies utilisées : HTML, CSS, JS.</p>
-                    <a href="#">Voir le code</a>
-                </div>
-                <div class="project-card">
-                    <h3>Projet 2</h3>
-                    <p>Un autre excellent projet sur lequel j'ai travaillé récemment.</p>
-                    <a href="#">Voir le code</a>
-                </div>
-            </div>
-        </section>
+<section id="hero">
+  <div class="hero-bg-line"></div>
+  <div class="hero-bg-line2"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Data Engineer · IA · Cloud</p>
+    <h1 class="hero-name">Khadija<br><em>El Merahy</em></h1>
+    <p class="hero-tagline">
+      Ingénieure spécialisée en Data Engineering, Cloud et Intelligence Artificielle. Je construis des pipelines de données robustes et des systèmes prêts pour la production.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">Voir les projets</a>
+      <a href="#contact" class="btn-ghost">
+        Me contacter
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+          <path d="M8.5 1L13 5L8.5 9M1 5H13" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Défiler</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
 
-        <section id="contact">
-            <h2>Contactez-moi</h2>
-            <p>Vous avez une idée ou un projet ? N'hésitez pas à m'envoyer un message !</p>
-            <a href="mailto:ton.email@exemple.com" class="btn">M'écrire un email</a>
-        </section>
-    </main>
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-number">01</span>
+    <h2 class="section-title">À <em>propos</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        Étudiante ingénieure en <strong>4ème année</strong> à l'ENSA Berrechid, spécialité <em>Systèmes d'Information et Big Data</em>. Je conçois des architectures de données scalables, des pipelines ELT robustes, et j'explore l'intersection entre le Data Engineering et l'Intelligence Artificielle.
+      </p>
+      <p>
+        Ma démarche est guidée par une exigence de <strong>précision technique</strong> et une volonté de livrer des systèmes qui tiennent en production — pas seulement des prototypes. Je cherche une opportunité de <strong>stage PFA</strong> pour mettre ces compétences au service d'une équipe ambitieuse.
+      </p>
+      <p>
+        Curieuse, rigoureuse, passionnée par la transformation de la donnée brute en <em>intelligence actionnable</em>.
+      </p>
+    </div>
+    <div class="about-aside reveal reveal-delay-2">
+      <div class="aside-block">
+        <div class="aside-label">Formation</div>
+        <div class="aside-content">
+          ENSA Berrechid<br>
+          Cycle Ingénieur ISBD<br>
+          2022 — 2027
+        </div>
+      </div>
+      <div class="aside-block">
+        <div class="aside-label">Contact</div>
+        <div class="aside-content">
+          Casablanca, Maroc<br>
+          <a href="mailto:elmerahykhadija700@gmail.com">elmerahykhadija700@gmail.com</a><br>
+          +212 656-442-062
+        </div>
+      </div>
+      <div class="aside-block">
+        <div class="aside-label">Langues</div>
+        <div class="lang-badges">
+          <span class="lang-badge">Arabe — Natif</span>
+          <span class="lang-badge">Français — B2</span>
+          <span class="lang-badge">Anglais — B2</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <p>&copy; 2026 [Ton Nom]. Tous droits réservés.</p>
-    </footer>
+<section id="skills">
+  <div class="section-header reveal">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Compé<em>tences</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-category">
+      <div class="skill-cat-title">Data Engineering</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Apache Airflow</span>
+        <span class="skill-tag">Apache Spark</span>
+        <span class="skill-tag">Apache Kafka</span>
+        <span class="skill-tag">dbt</span>
+        <span class="skill-tag">Snowflake</span>
+        <span class="skill-tag">RabbitMQ</span>
+        <span class="skill-tag">Medallion Architecture</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-title">Cloud &amp; DevOps</div>
+      <div class="skill-tags">
+        <span class="skill-tag">AWS EC2</span>
+        <span class="skill-tag">AWS S3</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">CI/CD</span>
+        <span class="skill-tag">GitHub Actions</span>
+        <span class="skill-tag">Linux</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-title">Programmation</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">FastAPI</span>
+        <span class="skill-tag">Streamlit</span>
+        <span class="skill-tag">Git</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-title">IA &amp; Machine Learning</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Scikit-learn</span>
+        <span class="skill-tag">LLMs</span>
+        <span class="skill-tag">LangChain</span>
+        <span class="skill-tag">Systèmes Multi-Agents</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script src="script.js"></script>
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-number">03</span>
+    <h2 class="section-title">Pro<em>jets</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-list">
+
+    <a href="https://github.com/elmerahykhadija/ELT-pipline-ticketmaster" target="_blank" class="project-item reveal">
+      <div class="project-num">001</div>
+      <div class="project-body">
+        <div class="project-name">Pipeline ELT — Ticketmaster</div>
+        <div class="project-desc">Pipeline ELT complet et scalable avec orchestration Airflow, messagerie RabbitMQ, stockage Snowflake et transformations dbt. Déploiement automatisé sur AWS EC2 via CI/CD GitHub Actions.</div>
+        <div class="project-techs">
+          <span class="project-tech">Airflow</span>
+          <span class="project-tech">RabbitMQ</span>
+          <span class="project-tech">Snowflake</span>
+          <span class="project-tech">dbt</span>
+          <span class="project-tech">Docker</span>
+          <span class="project-tech">AWS EC2</span>
+          <span class="project-tech">CI/CD</span>
+        </div>
+      </div>
+      <div class="project-arrow">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M4 14L14 4M14 4H7M14 4V11" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </div>
+    </a>
+
+    <a href="https://github.com/elmerahykhadija/e-commerce-data-pipeline" target="_blank" class="project-item reveal reveal-delay-1">
+      <div class="project-num">002</div>
+      <div class="project-body">
+        <div class="project-name">Pipeline E-commerce</div>
+        <div class="project-desc">Architecture Medallion (Bronze / Silver / Gold) construite avec Airflow, Spark, AWS S3 et Snowflake. Traitement distribué de données e-commerce en environnement conteneurisé.</div>
+        <div class="project-techs">
+          <span class="project-tech">Airflow</span>
+          <span class="project-tech">Spark</span>
+          <span class="project-tech">AWS S3</span>
+          <span class="project-tech">Snowflake</span>
+          <span class="project-tech">Docker</span>
+        </div>
+      </div>
+      <div class="project-arrow">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M4 14L14 4M14 4H7M14 4V11" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </div>
+    </a>
+
+    <a href="https://github.com/elmerahykhadija/projet-annonces" target="_blank" class="project-item reveal reveal-delay-2">
+      <div class="project-num">003</div>
+      <div class="project-body">
+        <div class="project-name">Scraping temps réel &amp; Alertes</div>
+        <div class="project-desc">Ingestion en temps réel avec Kafka et Spark Streaming. Système d'alertes automatisé et visualisation interactive des annonces via Streamlit.</div>
+        <div class="project-techs">
+          <span class="project-tech">Python</span>
+          <span class="project-tech">Kafka</span>
+          <span class="project-tech">Spark</span>
+          <span class="project-tech">MySQL</span>
+          <span class="project-tech">Streamlit</span>
+        </div>
+      </div>
+      <div class="project-arrow">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M4 14L14 4M14 4H7M14 4V11" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-number">04</span>
+    <h2 class="section-title">Expé<em>rience</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="exp-item reveal">
+    <div class="exp-meta">
+      <div class="exp-company">Résidences Dar Saada</div>
+      <div class="exp-date">Juillet 2025</div>
+    </div>
+    <div class="exp-content">
+      <div class="exp-role">Stagiaire Data &amp; IA</div>
+      <ul class="exp-points">
+        <li>Conception d'un système multi-agents pour l'analyse de données automatisée : ingestion, nettoyage, visualisation et interrogation via LLM.</li>
+        <li>Développement avec Python, MySQL et modèles de langage pour automatiser des processus analytiques métier.</li>
+        <li>Livrable open source disponible sur GitHub.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="section-header reveal">
+    <span class="section-number">05</span>
+    <h2 class="section-title">Certifi<em>cations</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="certs-grid">
+    <a href="https://udemy-certificate.s3.amazonaws.com/pdf/UC-f6f7794b-309f-44cb-8107-fec487aac5f5.pdf" target="_blank" class="cert-card reveal">
+      <div class="cert-platform">Udemy</div>
+      <div class="cert-name">Data Science &amp; ML MasterClass</div>
+      <div class="cert-link-text">
+        Voir le certificat
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </div>
+    </a>
+    <a href="https://www.datacamp.com/statement-of-accomplishment/course/9e3dbc4c35f12000f15d966e54748d26898b785d?raw=1" target="_blank" class="cert-card reveal reveal-delay-1">
+      <div class="cert-platform">DataCamp</div>
+      <div class="cert-name">Introduction to Apache Airflow</div>
+      <div class="cert-link-text">
+        Voir le certificat
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </div>
+    </a>
+    <a href="http://datacamp.com/statement-of-accomplishment/course/c0d67a3f9261e55392edc12bafa77837a9f90e43?raw=1" target="_blank" class="cert-card reveal reveal-delay-2">
+      <div class="cert-platform">DataCamp</div>
+      <div class="cert-name">Introduction to dbt</div>
+      <div class="cert-link-text">
+        Voir le certificat
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-header reveal">
+    <span class="section-number">06</span>
+    <h2 class="section-title">Con<em>tact</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <p class="contact-intro">Discutons de votre prochain <em>projet de données</em>.</p>
+      <p class="contact-sub">Je suis à la recherche d'un stage PFA et ouverte à toute opportunité enrichissante dans le domaine du Data Engineering, du Cloud ou de l'IA.</p>
+      <div class="contact-links">
+        <a href="mailto:elmerahykhadija700@gmail.com" class="contact-link">
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value">elmerahykhadija700@gmail.com</span>
+        </a>
+        <a href="tel:+212656442062" class="contact-link">
+          <span class="contact-link-label">Téléphone</span>
+          <span class="contact-link-value">+212 656-442-062</span>
+        </a>
+        <a href="https://www.linkedin.com/in/khadija-el-merahy" target="_blank" class="contact-link">
+          <span class="contact-link-label">LinkedIn</span>
+          <span class="contact-link-value">khadija-el-merahy</span>
+        </a>
+        <a href="https://github.com/elmerahykhadija" target="_blank" class="contact-link">
+          <span class="contact-link-label">GitHub</span>
+          <span class="contact-link-value">elmerahykhadija</span>
+        </a>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="contact-availability">
+        <div class="availability-label">
+          <span class="availability-dot"></span>
+          Disponible — Stage PFA
+        </div>
+        <p class="availability-text">
+          4ème année Ingénieur à l'ENSA Berrechid, je recherche activement un stage de fin d'études dans le domaine de la Data et de l'IA. Disponible à Casablanca et ouvert au télétravail.
+        </p>
+      </div>
+      <div class="contact-education">
+        <div class="edu-label">Formation</div>
+        <div class="edu-text">
+          ENSA Berrechid<br>
+          Cycle Ingénieur — Systèmes d'Information &amp; Big Data<br>
+          Promotion 2027
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Khadija El Merahy</span>
+  <span class="footer-copy">© 2025 — Casablanca, Maroc</span>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+  function animRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); }
+  animRing();
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%, -50%) scale(2)'; cursor.style.opacity = '0.5'; ring.style.width = '48px'; ring.style.height = '48px'; });
+    el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%, -50%) scale(1)'; cursor.style.opacity = '1'; ring.style.width = '32px'; ring.style.height = '32px'; });
+  });
+
+  // Nav scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
