@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Khadija El Merahy — Data Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -21,9 +21,9 @@
     --bordeaux-dim: #4a1a26;
     --or: #c9a96e;
     --or-dim: #8a6f42;
-    --muted: #5a5550;
-    --line: rgba(240,235,226,0.08);
-    --line-strong: rgba(240,235,226,0.15);
+    --muted: #6b6660;
+    --line: rgba(240,235,226,0.1);
+    --line-strong: rgba(240,235,226,0.18);
   }
 
   html { scroll-behavior: smooth; }
@@ -34,37 +34,12 @@
     font-family: 'Jost', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
-    cursor: none;
   }
-
-  /* Custom cursor */
-  .cursor {
-    position: fixed;
-    width: 8px; height: 8px;
-    background: var(--bordeaux-light);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
-  }
-  .cursor-ring {
-    position: fixed;
-    width: 32px; height: 32px;
-    border: 1px solid rgba(158,58,80,0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.18s ease, width 0.3s ease, height 0.3s ease;
-  }
-  body:hover .cursor { opacity: 1; }
-  a:hover ~ .cursor, button:hover ~ .cursor { transform: translate(-50%, -50%) scale(2.5); }
 
   /* Scrollbar */
-  ::-webkit-scrollbar { width: 2px; }
+  ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--noir); }
-  ::-webkit-scrollbar-thumb { background: var(--bordeaux); }
+  ::-webkit-scrollbar-thumb { background: var(--bordeaux); border-radius: 4px;}
 
   /* Nav */
   nav {
@@ -84,7 +59,7 @@
   }
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 300;
     letter-spacing: 0.15em;
     color: var(--creme);
@@ -93,18 +68,19 @@
   .nav-logo span { color: var(--bordeaux-light); font-style: italic; }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--creme-dim);
     text-decoration: none;
     transition: color 0.3s;
     position: relative;
+    padding-bottom: 4px;
   }
   .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: -3px; left: 0;
+    bottom: -2px; left: 0;
     width: 0; height: 1px;
     background: var(--bordeaux-light);
     transition: width 0.3s ease;
@@ -120,6 +96,17 @@
     padding: 0 4rem;
     position: relative;
     overflow: hidden;
+  }
+  /* Soft background glow - the custom touch */
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: 20%; left: -10%;
+    width: 50vw; height: 50vw;
+    background: radial-gradient(circle, rgba(122,44,62,0.08) 0%, rgba(10,10,10,0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
   }
   .hero-bg-line {
     position: absolute;
@@ -138,7 +125,7 @@
   .hero-content { max-width: 900px; position: relative; z-index: 2; }
   .hero-eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: var(--bordeaux-light);
@@ -162,11 +149,11 @@
   }
   .hero-tagline {
     margin-top: 2.5rem;
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     font-weight: 300;
     letter-spacing: 0.08em;
     color: var(--creme-dim);
-    max-width: 480px;
+    max-width: 550px;
     line-height: 1.8;
     opacity: 0;
     animation: fadeUp 0.9s ease 0.6s forwards;
@@ -180,34 +167,46 @@
     animation: fadeUp 0.9s ease 0.8s forwards;
   }
   .btn-primary {
-    display: inline-block;
-    padding: 0.9rem 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
     border: 1px solid var(--bordeaux);
-    background: var(--bordeaux);
+    background: rgba(122, 44, 62, 0.1);
     color: var(--creme);
     font-family: 'Jost', sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 400;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     text-decoration: none;
-    transition: background 0.3s, border-color 0.3s;
-    cursor: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
   }
-  .btn-primary:hover { background: var(--bordeaux-light); border-color: var(--bordeaux-light); }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bordeaux);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+  }
+  .btn-primary:hover::before { transform: translateX(0); }
+  
   .btn-ghost {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--creme-dim);
     text-decoration: none;
     transition: color 0.3s;
-    cursor: none;
   }
-  .btn-ghost:hover { color: var(--creme); }
+  .btn-ghost:hover { color: var(--creme); border-bottom: 1px solid var(--creme); padding-bottom: 2px;}
   .btn-ghost svg { transition: transform 0.3s; }
   .btn-ghost:hover svg { transform: translateX(4px); }
 
@@ -217,12 +216,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1rem;
     opacity: 0;
     animation: fadeIn 1s ease 1.2s forwards;
   }
   .hero-scroll span {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--muted);
@@ -235,7 +234,7 @@
   }
 
   /* Sections common */
-  section { padding: 7rem 4rem; }
+  section { padding: 8rem 4rem; position: relative; }
   .section-header {
     display: flex;
     align-items: baseline;
@@ -244,14 +243,14 @@
   }
   .section-number {
     font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     color: var(--bordeaux-light);
     letter-spacing: 0.2em;
     opacity: 0.7;
   }
   .section-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-size: clamp(2.5rem, 4vw, 4rem);
     font-weight: 300;
     letter-spacing: -0.01em;
     color: var(--creme);
@@ -261,7 +260,7 @@
     flex: 1;
     height: 1px;
     background: var(--line);
-    max-width: 200px;
+    max-width: 250px;
     margin-left: auto;
   }
 
@@ -271,13 +270,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6rem;
-    align-items: start;
+    align-items: center; /* Modifié pour centrer l'image verticalement */
   }
   .about-text p {
-    font-size: 1rem;
+    font-size: 1.05rem;
     line-height: 1.9;
     color: var(--creme-dim);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
     font-weight: 300;
   }
   .about-text p strong {
@@ -288,192 +287,86 @@
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--bordeaux-light);
-    font-size: 1.1em;
-  }
-  .about-aside {}
-  .aside-block {
-    border-left: 1px solid var(--line-strong);
-    padding-left: 2rem;
-    margin-bottom: 3rem;
-  }
-  .aside-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--bordeaux-light);
-    margin-bottom: 1rem;
-    opacity: 0.8;
-  }
-  .aside-content {
-    font-size: 0.85rem;
-    color: var(--creme-dim);
-    line-height: 1.8;
-  }
-  .aside-content a {
-    color: var(--creme-dim);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .aside-content a:hover { color: var(--creme); }
-  .lang-badges { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 0.5rem; }
-  .lang-badge {
-    padding: 0.35rem 1rem;
-    border: 1px solid var(--line-strong);
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--creme-dim);
+    font-size: 1.15em;
   }
 
-  /* Skills */
-  #skills { background: var(--noir); }
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0;
-  }
-  .skill-category {
-    padding: 2.5rem 3rem;
-    border: 1px solid var(--line);
+  /* Nouveaux styles pour la photo de profil */
+  .profile-image-container {
     position: relative;
-    transition: border-color 0.3s, background 0.3s;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
-  .skill-category:hover { border-color: var(--bordeaux-dim); background: rgba(122,44,62,0.04); }
-  .skill-cat-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--bordeaux-light);
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
-  }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-  .skill-tag {
-    font-size: 0.75rem;
-    font-weight: 300;
-    color: var(--creme-dim);
-    padding: 0.4rem 0.9rem;
-    border: 1px solid var(--line-strong);
-    letter-spacing: 0.05em;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .skill-tag:hover { color: var(--creme); border-color: rgba(158,58,80,0.4); }
-
-  /* Projects */
-  #projects { background: var(--noir-soft); }
-  .projects-list { display: flex; flex-direction: column; gap: 0; }
-  .project-item {
-    display: grid;
-    grid-template-columns: 80px 1fr auto;
-    align-items: start;
-    gap: 2rem;
-    padding: 2.8rem 0;
-    border-bottom: 1px solid var(--line);
-    text-decoration: none;
-    transition: background 0.3s;
-    cursor: none;
-    position: relative;
-  }
-  .project-item::before {
+  .profile-image-container::before {
     content: '';
     position: absolute;
-    left: -4rem; right: -4rem; top: 0; bottom: 0;
-    background: rgba(122,44,62,0.03);
-    opacity: 0;
-    transition: opacity 0.3s;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%; height: 120%;
+    background: radial-gradient(circle, rgba(122,44,62,0.15) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
   }
-  .project-item:hover::before { opacity: 1; }
-  .project-item:first-child { border-top: 1px solid var(--line); }
-  .project-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    color: var(--bordeaux-light);
-    opacity: 0.6;
-    padding-top: 0.3rem;
+  .profile-image {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    border-radius: 4px;
+    position: relative;
+    z-index: 1;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 15px 35px -10px rgba(0,0,0,0.6);
+    filter: grayscale(40%) contrast(1.1);
+    transition: filter 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
   }
-  .project-body {}
-  .project-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.7rem;
-    font-weight: 400;
-    color: var(--creme);
-    letter-spacing: -0.01em;
-    margin-bottom: 0.6rem;
-    transition: color 0.3s;
+  .profile-image-container:hover .profile-image {
+    filter: grayscale(0%) contrast(1);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -10px rgba(122, 44, 62, 0.4);
   }
-  .project-item:hover .project-name { color: var(--bordeaux-light); }
-  .project-desc {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 550px;
-    font-weight: 300;
-  }
-  .project-techs {
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
-    margin-top: 1rem;
-  }
-  .project-tech {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.12em;
-    color: var(--bordeaux-light);
-    border: 1px solid var(--bordeaux-dim);
-    padding: 0.25rem 0.7rem;
-    opacity: 0.85;
-  }
-  .project-arrow {
-    padding-top: 0.4rem;
-    color: var(--muted);
-    transition: color 0.3s, transform 0.3s;
-  }
-  .project-item:hover .project-arrow { color: var(--bordeaux-light); transform: translate(4px, -4px); }
 
-  /* Experience */
+  /* Experience (Maintenant directement sous profil) */
   #experience { background: var(--noir); }
   .exp-item {
     display: grid;
     grid-template-columns: 1fr 3fr;
     gap: 4rem;
-    padding: 3rem 0;
+    padding: 3.5rem 0;
     border-bottom: 1px solid var(--line);
+    transition: background 0.4s;
   }
   .exp-item:first-child { border-top: 1px solid var(--line); }
-  .exp-meta {}
+  .exp-item:hover { background: rgba(122,44,62,0.02); }
   .exp-company {
     font-family: 'DM Mono', monospace;
-    font-size: 0.62rem;
+    font-size: 0.7rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--bordeaux-light);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.6rem;
     opacity: 0.9;
   }
   .exp-date {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     color: var(--muted);
     font-weight: 300;
   }
-  .exp-content {}
   .exp-role {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
+    font-size: 1.8rem; /* Agrandit l'écriture */
     font-weight: 400;
     color: var(--creme);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
   .exp-points {
     list-style: none;
   }
   .exp-points li {
-    font-size: 0.82rem;
+    font-size: 0.95rem; /* Agrandit l'écriture */
     color: var(--creme-dim);
     line-height: 1.8;
-    padding: 0.3rem 0;
-    padding-left: 1.2rem;
+    padding: 0.4rem 0;
+    padding-left: 1.5rem;
     position: relative;
     font-weight: 300;
   }
@@ -485,41 +378,170 @@
     opacity: 0.6;
   }
 
+  /* Skills */
+  #skills { background: var(--noir-soft); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+  .skill-category {
+    padding: 3.5rem 3.5rem;
+    border: 1px solid var(--line);
+    position: relative;
+    transition: border-color 0.4s, background 0.4s;
+  }
+  .skill-category:hover { border-color: var(--bordeaux-dim); background: rgba(122,44,62,0.04); }
+  .skill-cat-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bordeaux-light);
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .skill-tag {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--creme-dim);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--line-strong);
+    letter-spacing: 0.05em;
+    transition: color 0.3s, border-color 0.3s, transform 0.3s;
+  }
+  .skill-tag:hover { color: var(--creme); border-color: rgba(158,58,80,0.4); transform: translateY(-2px);}
+
+
+  /* Projects - Détaillés */
+  #projects { background: var(--noir); }
+  .projects-list { display: flex; flex-direction: column; gap: 4rem; }
+  .project-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .project-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .project-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--bordeaux-light);
+    opacity: 0.6;
+    padding-top: 0.3rem;
+  }
+  .project-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Image à droite, texte à gauche */
+      gap: 4rem;
+      align-items: center;
+  }
+  .project-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--creme);
+    letter-spacing: -0.01em;
+    margin-bottom: 1.2rem;
+  }
+  .project-desc {
+    font-size: 0.95rem; /* Agrandit l'écriture */
+    color: var(--creme-dim);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  .project-techs {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-bottom: 2.5rem;
+  }
+  .project-tech {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--bordeaux-light);
+    border: 1px solid var(--bordeaux-dim);
+    padding: 0.35rem 0.8rem;
+    opacity: 0.85;
+  }
+  .project-image-container {
+      position: relative;
+      width: 100%;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      /* La touche élégante : petite lueur sous l'image */
+      box-shadow: 0 10px 30px -15px rgba(122, 44, 62, 0.4);
+      transition: transform 0.4s, box-shadow 0.4s;
+  }
+  .project-image-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -20px rgba(122, 44, 62, 0.8);
+      border-color: var(--bordeaux-dim);
+  }
+  .project-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: grayscale(80%) contrast(1.1);
+      transition: filter 0.5s;
+  }
+  .project-image-container:hover .project-image {
+      filter: grayscale(0%) contrast(1);
+  }
+  .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--creme);
+      text-decoration: none;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--bordeaux-light);
+      transition: all 0.3s;
+  }
+  .project-link:hover { color: var(--bordeaux-light); gap: 1.2rem; }
+
+
   /* Certifications */
   #certifications { background: var(--noir-soft); }
   .certs-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 2rem;
   }
   .cert-card {
     border: 1px solid var(--line);
-    padding: 2rem;
+    padding: 2.5rem;
     text-decoration: none;
     display: block;
-    transition: border-color 0.3s, background 0.3s;
-    cursor: none;
+    transition: border-color 0.3s, background 0.3s, transform 0.3s;
   }
-  .cert-card:hover { border-color: var(--bordeaux-dim); background: rgba(122,44,62,0.04); }
+  .cert-card:hover { border-color: var(--bordeaux-dim); background: rgba(122,44,62,0.04); transform: translateY(-5px); }
   .cert-platform {
     font-family: 'DM Mono', monospace;
-    font-size: 0.55rem;
+    font-size: 0.6rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--bordeaux-light);
     opacity: 0.8;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
   }
   .cert-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
+    font-size: 1.4rem; /* Agrandit l'écriture */
     font-weight: 400;
     color: var(--creme);
     line-height: 1.4;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
   .cert-link-text {
-    font-size: 0.62rem;
+    font-size: 0.65rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--muted);
@@ -528,7 +550,7 @@
     gap: 0.5rem;
     transition: color 0.3s;
   }
-  .cert-card:hover .cert-link-text { color: var(--creme-dim); }
+  .cert-card:hover .cert-link-text { color: var(--bordeaux-light); }
 
   /* Contact */
   #contact { background: var(--noir); }
@@ -540,7 +562,7 @@
   }
   .contact-intro {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 300;
     line-height: 1.35;
     color: var(--creme);
@@ -549,10 +571,10 @@
   }
   .contact-intro em { font-style: italic; color: var(--bordeaux-light); }
   .contact-sub {
-    font-size: 0.85rem;
-    color: var(--muted);
+    font-size: 0.95rem; /* Agrandit l'écriture */
+    color: var(--creme-dim);
     line-height: 1.8;
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
     font-weight: 300;
   }
   .contact-links { display: flex; flex-direction: column; gap: 0; }
@@ -560,72 +582,71 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem 0;
+    padding: 1.5rem 0;
     border-bottom: 1px solid var(--line);
     text-decoration: none;
-    transition: padding-left 0.3s;
-    cursor: none;
+    transition: padding-left 0.3s, background 0.3s;
   }
   .contact-link:first-child { border-top: 1px solid var(--line); }
-  .contact-link:hover { padding-left: 0.5rem; }
+  .contact-link:hover { padding-left: 1rem; background: rgba(122,44,62,0.02);}
   .contact-link-label {
     font-family: 'DM Mono', monospace;
-    font-size: 0.62rem;
+    font-size: 0.65rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--muted);
   }
   .contact-link-value {
-    font-size: 0.82rem;
+    font-size: 0.9rem;
     color: var(--creme-dim);
     transition: color 0.3s;
   }
   .contact-link:hover .contact-link-value { color: var(--bordeaux-light); }
-  .contact-right {}
+  
   .contact-availability {
     border: 1px solid var(--bordeaux-dim);
-    padding: 2rem 2.5rem;
+    padding: 2.5rem 3rem;
     background: rgba(122,44,62,0.04);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
   .availability-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
     background: var(--bordeaux-light);
     display: inline-block;
-    margin-right: 0.6rem;
+    margin-right: 0.8rem;
     animation: pulse 2s ease-in-out infinite;
   }
   .availability-label {
     font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--bordeaux-light);
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
   }
   .availability-text {
-    font-size: 0.82rem;
+    font-size: 0.95rem; /* Agrandit l'écriture */
     color: var(--creme-dim);
     line-height: 1.8;
     font-weight: 300;
   }
   .contact-education {
-    padding: 1.5rem 0;
+    padding: 2rem 0;
     border-top: 1px solid var(--line);
   }
   .edu-label {
     font-family: 'DM Mono', monospace;
-    font-size: 0.58rem;
+    font-size: 0.65rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
   }
   .edu-text {
-    font-size: 0.82rem;
+    font-size: 0.95rem; /* Agrandit l'écriture */
     color: var(--creme-dim);
     line-height: 1.7;
     font-weight: 300;
@@ -633,7 +654,7 @@
 
   /* Footer */
   footer {
-    padding: 2rem 4rem;
+    padding: 3rem 4rem;
     border-top: 1px solid var(--line);
     display: flex;
     justify-content: space-between;
@@ -641,13 +662,13 @@
   }
   .footer-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 300;
     letter-spacing: 0.1em;
     color: var(--muted);
   }
   .footer-copy {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: 0.15em;
     color: var(--muted);
     opacity: 0.5;
@@ -675,18 +696,19 @@
   .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
   }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
 
   /* Responsive */
+  @media (max-width: 1024px) {
+      .project-content { grid-template-columns: 1fr; gap: 2rem; }
+  }
   @media (max-width: 900px) {
     nav { padding: 1.5rem 2rem; }
     .nav-links { display: none; }
@@ -696,25 +718,22 @@
     .skills-grid { grid-template-columns: 1fr; }
     .certs-grid { grid-template-columns: 1fr; }
     .exp-item { grid-template-columns: 1fr; gap: 1rem; }
-    .project-item { grid-template-columns: 60px 1fr; }
-    .project-arrow { display: none; }
+    .project-item { grid-template-columns: 1fr; gap: 1rem; }
+    .project-num { display: none; }
     .hero-scroll { display: none; }
-    footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    footer { padding: 2rem; flex-direction: column; gap: 1rem; text-align: center; }
   }
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursor-ring"></div>
-
 <nav id="navbar">
   <a href="#hero" class="nav-logo">K<span>.</span>El Merahy</a>
   <ul class="nav-links">
     <li><a href="#about">Profil</a></li>
+    <li><a href="#experience">Expérience</a></li>
     <li><a href="#skills">Compétences</a></li>
     <li><a href="#projects">Projets</a></li>
-    <li><a href="#experience">Expérience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -726,10 +745,10 @@
     <p class="hero-eyebrow">Data Engineer · IA · Cloud</p>
     <h1 class="hero-name">Khadija<br><em>El Merahy</em></h1>
     <p class="hero-tagline">
-      Ingénieure spécialisée en Data Engineering, Cloud et Intelligence Artificielle. Je construis des pipelines de données robustes et des systèmes prêts pour la production.
+      Ingénieure spécialisée en Data Engineering, Cloud et Intelligence Artificielle. Je construis des architectures de données robustes, scalables et des systèmes prêts pour la production.
     </p>
     <div class="hero-cta">
-      <a href="#projects" class="btn-primary">Voir les projets</a>
+      <a href="#projects" class="btn-primary">Explorer mon travail</a>
       <a href="#contact" class="btn-ghost">
         Me contacter
         <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
@@ -739,7 +758,7 @@
     </div>
   </div>
   <div class="hero-scroll">
-    <span>Défiler</span>
+    <span>Découvrir</span>
     <div class="scroll-line"></div>
   </div>
 </section>
@@ -753,47 +772,51 @@
   <div class="about-grid">
     <div class="about-text reveal">
       <p>
-        Étudiante ingénieure en <strong>4ème année</strong> à l'ENSA Berrechid, spécialité <em>Systèmes d'Information et Big Data</em>. Je conçois des architectures de données scalables, des pipelines ELT robustes, et j'explore l'intersection entre le Data Engineering et l'Intelligence Artificielle.
+        Étudiante ingénieure en <strong>4ème année</strong> à l'ENSA Berrechid, spécialité <em>Systèmes d'Information et Big Data</em>. Je conçois des architectures de données scalables, des pipelines ELT robustes, et j'explore en profondeur l'intersection entre l'ingénierie des données et l'Intelligence Artificielle.
       </p>
       <p>
-        Ma démarche est guidée par une exigence de <strong>précision technique</strong> et une volonté de livrer des systèmes qui tiennent en production — pas seulement des prototypes. Je cherche une opportunité de <strong>stage PFA</strong> pour mettre ces compétences au service d'une équipe ambitieuse.
+        Ma démarche est guidée par une exigence de <strong>précision technique</strong> et une volonté ferme de livrer des systèmes pérennes en production. Je recherche activement une opportunité de <strong>stage PFA</strong> pour mettre à profit ces compétences au sein d'une équipe ambitieuse.
       </p>
       <p>
-        Curieuse, rigoureuse, passionnée par la transformation de la donnée brute en <em>intelligence actionnable</em>.
+        Curieuse, rigoureuse et passionnée par la transformation de la donnée brute en <em>intelligence structurée et actionnable</em>.
       </p>
     </div>
+    
+    <!-- Remplacement des blocs par la photo de profil -->
     <div class="about-aside reveal reveal-delay-2">
-      <div class="aside-block">
-        <div class="aside-label">Formation</div>
-        <div class="aside-content">
-          ENSA Berrechid<br>
-          Cycle Ingénieur ISBD<br>
-          2022 — 2027
-        </div>
+      <div class="profile-image-container">
+        <img src="img/profile.jpeg" alt="Khadija El Merahy" class="profile-image">
       </div>
-      <div class="aside-block">
-        <div class="aside-label">Contact</div>
-        <div class="aside-content">
-          Casablanca, Maroc<br>
-          <a href="mailto:elmerahykhadija700@gmail.com">elmerahykhadija700@gmail.com</a><br>
-          +212 656-442-062
-        </div>
-      </div>
-      <div class="aside-block">
-        <div class="aside-label">Langues</div>
-        <div class="lang-badges">
-          <span class="lang-badge">Arabe — Natif</span>
-          <span class="lang-badge">Français — B2</span>
-          <span class="lang-badge">Anglais — B2</span>
-        </div>
-      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE DEPLACEE ICI -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Expé<em>rience</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="exp-item reveal">
+    <div class="exp-meta">
+      <div class="exp-company">Résidences Dar Saada</div>
+      <div class="exp-date">Juillet 2025</div>
+    </div>
+    <div class="exp-content">
+      <div class="exp-role">Stagiaire Data &amp; IA</div>
+      <ul class="exp-points">
+        <li>Conception exhaustive d'un système multi-agents pour l'analyse de données automatisée : ingestion, nettoyage, visualisation et interrogation experte via LLM.</li>
+        <li>Développement avancé en Python et MySQL, et intégration de modèles de langage pour automatiser et fiabiliser des processus analytiques métier complexes.</li>
+        <li>Documentation rigoureuse et livrable open source disponible publiquement sur GitHub.</li>
+      </ul>
     </div>
   </div>
 </section>
 
 <section id="skills">
   <div class="section-header reveal">
-    <span class="section-number">02</span>
+    <span class="section-number">03</span>
     <h2 class="section-title">Compé<em>tences</em></h2>
     <div class="section-line"></div>
   </div>
@@ -838,7 +861,7 @@
         <span class="skill-tag">Scikit-learn</span>
         <span class="skill-tag">LLMs</span>
         <span class="skill-tag">LangChain</span>
-        <span class="skill-tag">Systèmes Multi-Agents</span>
+        <span class="skill-tag">Agents IA</span>
       </div>
     </div>
   </div>
@@ -846,96 +869,97 @@
 
 <section id="projects">
   <div class="section-header reveal">
-    <span class="section-number">03</span>
+    <span class="section-number">04</span>
     <h2 class="section-title">Pro<em>jets</em></h2>
     <div class="section-line"></div>
   </div>
   <div class="projects-list">
 
-    <a href="https://github.com/elmerahykhadija/ELT-pipline-ticketmaster" target="_blank" class="project-item reveal">
+    <div class="project-item reveal">
       <div class="project-num">001</div>
-      <div class="project-body">
-        <div class="project-name">Pipeline ELT — Ticketmaster</div>
-        <div class="project-desc">Pipeline ELT complet et scalable avec orchestration Airflow, messagerie RabbitMQ, stockage Snowflake et transformations dbt. Déploiement automatisé sur AWS EC2 via CI/CD GitHub Actions.</div>
-        <div class="project-techs">
-          <span class="project-tech">Airflow</span>
-          <span class="project-tech">RabbitMQ</span>
-          <span class="project-tech">Snowflake</span>
-          <span class="project-tech">dbt</span>
-          <span class="project-tech">Docker</span>
-          <span class="project-tech">AWS EC2</span>
-          <span class="project-tech">CI/CD</span>
+      <div class="project-content">
+          <div class="project-info">
+            <h3 class="project-name">Pipeline ELT — Ticketmaster</h3>
+            <p class="project-desc">Un pipeline de données d'entreprise complet. J'ai orchestré l'ensemble via <strong>Airflow</strong>, géré le flux de messages avec <strong>RabbitMQ</strong> et modélisé la donnée sur <strong>Snowflake</strong> via <strong>dbt</strong>. L'ensemble de l'infrastructure est conteneurisé et déployé sur <strong>AWS EC2</strong> avec une pipeline <strong>CI/CD GitHub Actions</strong>.</p>
+            <div class="project-techs">
+              <span class="project-tech">Airflow</span>
+              <span class="project-tech">RabbitMQ</span>
+              <span class="project-tech">Snowflake</span>
+              <span class="project-tech">dbt</span>
+              <span class="project-tech">AWS</span>
+            </div>
+            <a href="https://github.com/elmerahykhadija/ELT-pipline-ticketmaster" target="_blank" class="project-link">
+                Voir le projet détaillé
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M4 14L14 4M14 4H7M14 4V11" stroke="currentColor" stroke-width="1"/>
+                </svg>
+            </a>
+          </div>
+          <div class="project-image-wrapper">
+              <div class="project-image-container">
+                  <!-- Remplacez l'image par votre vrai diagramme d'architecture -->
+                  <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop" alt="Architecture Ticketmaster" class="project-image">
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="project-item reveal reveal-delay-1">
+        <div class="project-num">002</div>
+        <div class="project-content">
+            <div class="project-info">
+              <h3 class="project-name">Pipeline E-commerce DataLake</h3>
+              <p class="project-desc">Mise en place d'une architecture stricte <em>Medallion (Bronze / Silver / Gold)</em> pour le traitement distribué des données de ventes en ligne. Utilisant <strong>Apache Spark</strong> pour le traitement massif, orchestré par <strong>Airflow</strong> et stocké sur <strong>AWS S3</strong> vers <strong>Snowflake</strong>.</p>
+              <div class="project-techs">
+                <span class="project-tech">Spark</span>
+                <span class="project-tech">AWS S3</span>
+                <span class="project-tech">Medallion</span>
+                <span class="project-tech">Snowflake</span>
+              </div>
+              <a href="https://github.com/elmerahykhadija/e-commerce-data-pipeline" target="_blank" class="project-link">
+                  Voir le code source
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M4 14L14 4M14 4H7M14 4V11" stroke="currentColor" stroke-width="1"/>
+                  </svg>
+              </a>
+            </div>
+            <div class="project-image-wrapper">
+                <div class="project-image-container">
+                    <!-- Remplacez l'image par votre vrai diagramme d'architecture -->
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop" alt="Architecture E-commerce" class="project-image">
+                </div>
+            </div>
         </div>
       </div>
-      <div class="project-arrow">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M4 14L14 4M14 4H7M14 4V11" stroke="currentColor" stroke-width="1"/>
-        </svg>
-      </div>
-    </a>
 
-    <a href="https://github.com/elmerahykhadija/e-commerce-data-pipeline" target="_blank" class="project-item reveal reveal-delay-1">
-      <div class="project-num">002</div>
-      <div class="project-body">
-        <div class="project-name">Pipeline E-commerce</div>
-        <div class="project-desc">Architecture Medallion (Bronze / Silver / Gold) construite avec Airflow, Spark, AWS S3 et Snowflake. Traitement distribué de données e-commerce en environnement conteneurisé.</div>
-        <div class="project-techs">
-          <span class="project-tech">Airflow</span>
-          <span class="project-tech">Spark</span>
-          <span class="project-tech">AWS S3</span>
-          <span class="project-tech">Snowflake</span>
-          <span class="project-tech">Docker</span>
-        </div>
-      </div>
-      <div class="project-arrow">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M4 14L14 4M14 4H7M14 4V11" stroke="currentColor" stroke-width="1"/>
-        </svg>
-      </div>
-    </a>
-
-    <a href="https://github.com/elmerahykhadija/projet-annonces" target="_blank" class="project-item reveal reveal-delay-2">
+    <div class="project-item reveal reveal-delay-2">
       <div class="project-num">003</div>
-      <div class="project-body">
-        <div class="project-name">Scraping temps réel &amp; Alertes</div>
-        <div class="project-desc">Ingestion en temps réel avec Kafka et Spark Streaming. Système d'alertes automatisé et visualisation interactive des annonces via Streamlit.</div>
-        <div class="project-techs">
-          <span class="project-tech">Python</span>
-          <span class="project-tech">Kafka</span>
-          <span class="project-tech">Spark</span>
-          <span class="project-tech">MySQL</span>
-          <span class="project-tech">Streamlit</span>
-        </div>
+      <div class="project-content">
+          <div class="project-info">
+            <h3 class="project-name">Real-Time Scraping & Alertes</h3>
+            <p class="project-desc">Un système d'ingestion de données en continu. Le flux est capturé en temps réel via <strong>Apache Kafka</strong>, traité dynamiquement par <strong>Spark Streaming</strong> et stocké. L'interface utilisateur réactive et le système d'alerte automatisé ont été construits avec <strong>Streamlit</strong>.</p>
+            <div class="project-techs">
+              <span class="project-tech">Kafka</span>
+              <span class="project-tech">Spark</span>
+              <span class="project-tech">MySQL</span>
+              <span class="project-tech">Streamlit</span>
+            </div>
+            <a href="https://github.com/elmerahykhadija/projet-annonces" target="_blank" class="project-link">
+                Explorer l'architecture
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M4 14L14 4M14 4H7M14 4V11" stroke="currentColor" stroke-width="1"/>
+                </svg>
+            </a>
+          </div>
+          <div class="project-image-wrapper">
+              <div class="project-image-container">
+                  <!-- Remplacez l'image par votre vrai diagramme d'architecture -->
+                  <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1000&auto=format&fit=crop" alt="Architecture Temps Réel" class="project-image">
+              </div>
+          </div>
       </div>
-      <div class="project-arrow">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M4 14L14 4M14 4H7M14 4V11" stroke="currentColor" stroke-width="1"/>
-        </svg>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<section id="experience">
-  <div class="section-header reveal">
-    <span class="section-number">04</span>
-    <h2 class="section-title">Expé<em>rience</em></h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="exp-item reveal">
-    <div class="exp-meta">
-      <div class="exp-company">Résidences Dar Saada</div>
-      <div class="exp-date">Juillet 2025</div>
     </div>
-    <div class="exp-content">
-      <div class="exp-role">Stagiaire Data &amp; IA</div>
-      <ul class="exp-points">
-        <li>Conception d'un système multi-agents pour l'analyse de données automatisée : ingestion, nettoyage, visualisation et interrogation via LLM.</li>
-        <li>Développement avec Python, MySQL et modèles de langage pour automatiser des processus analytiques métier.</li>
-        <li>Livrable open source disponible sur GitHub.</li>
-      </ul>
-    </div>
+
   </div>
 </section>
 
@@ -950,7 +974,7 @@
       <div class="cert-platform">Udemy</div>
       <div class="cert-name">Data Science &amp; ML MasterClass</div>
       <div class="cert-link-text">
-        Voir le certificat
+        Valider les acquis
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
           <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1"/>
         </svg>
@@ -960,7 +984,7 @@
       <div class="cert-platform">DataCamp</div>
       <div class="cert-name">Introduction to Apache Airflow</div>
       <div class="cert-link-text">
-        Voir le certificat
+        Valider les acquis
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
           <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1"/>
         </svg>
@@ -968,9 +992,9 @@
     </a>
     <a href="http://datacamp.com/statement-of-accomplishment/course/c0d67a3f9261e55392edc12bafa77837a9f90e43?raw=1" target="_blank" class="cert-card reveal reveal-delay-2">
       <div class="cert-platform">DataCamp</div>
-      <div class="cert-name">Introduction to dbt</div>
+      <div class="cert-name">Introduction to dbt (Data Build Tool)</div>
       <div class="cert-link-text">
-        Voir le certificat
+        Valider les acquis
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
           <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1"/>
         </svg>
@@ -987,23 +1011,23 @@
   </div>
   <div class="contact-grid">
     <div class="reveal">
-      <p class="contact-intro">Discutons de votre prochain <em>projet de données</em>.</p>
-      <p class="contact-sub">Je suis à la recherche d'un stage PFA et ouverte à toute opportunité enrichissante dans le domaine du Data Engineering, du Cloud ou de l'IA.</p>
+      <p class="contact-intro">Discutons de vos besoins en <em>architecture et données</em>.</p>
+      <p class="contact-sub">Je suis actuellement à la recherche d'un stage PFA ambitieux. Je reste attentive à toute opportunité enrichissante dans les écosystèmes Data Engineering, Cloud ou Intelligence Artificielle.</p>
       <div class="contact-links">
         <a href="mailto:elmerahykhadija700@gmail.com" class="contact-link">
-          <span class="contact-link-label">Email</span>
+          <span class="contact-link-label">Email direct</span>
           <span class="contact-link-value">elmerahykhadija700@gmail.com</span>
         </a>
         <a href="tel:+212656442062" class="contact-link">
-          <span class="contact-link-label">Téléphone</span>
+          <span class="contact-link-label">Ligne téléphonique</span>
           <span class="contact-link-value">+212 656-442-062</span>
         </a>
         <a href="https://www.linkedin.com/in/khadija-el-merahy" target="_blank" class="contact-link">
-          <span class="contact-link-label">LinkedIn</span>
+          <span class="contact-link-label">Réseau LinkedIn</span>
           <span class="contact-link-value">khadija-el-merahy</span>
         </a>
         <a href="https://github.com/elmerahykhadija" target="_blank" class="contact-link">
-          <span class="contact-link-label">GitHub</span>
+          <span class="contact-link-label">Profil GitHub</span>
           <span class="contact-link-value">elmerahykhadija</span>
         </a>
       </div>
@@ -1012,18 +1036,18 @@
       <div class="contact-availability">
         <div class="availability-label">
           <span class="availability-dot"></span>
-          Disponible — Stage PFA
+          Statut : Recherche de Stage PFA
         </div>
         <p class="availability-text">
-          4ème année Ingénieur à l'ENSA Berrechid, je recherche activement un stage de fin d'études dans le domaine de la Data et de l'IA. Disponible à Casablanca et ouvert au télétravail.
+          Actuellement en 4ème année d'ingénierie à l'ENSA Berrechid, je recherche activement un stage technique dans la Data et l'IA. Je suis disponible sur Casablanca ou en télétravail.
         </p>
       </div>
       <div class="contact-education">
-        <div class="edu-label">Formation</div>
+        <div class="edu-label">Cycle Académique</div>
         <div class="edu-text">
-          ENSA Berrechid<br>
-          Cycle Ingénieur — Systèmes d'Information &amp; Big Data<br>
-          Promotion 2027
+          École Nationale des Sciences Appliquées de Berrechid<br>
+          Filière : Systèmes d'Information &amp; Big Data<br>
+          Promotion Sortante : 2027
         </div>
       </div>
     </div>
@@ -1031,23 +1055,11 @@
 </section>
 
 <footer>
-  <span class="footer-name">Khadija El Merahy</span>
-  <span class="footer-copy">© 2025 — Casablanca, Maroc</span>
+  <span class="footer-name">Khadija El Merahy — Ingénieure Data</span>
+  <span class="footer-copy">© 2025. Conçu avec rigueur. Casablanca, Maroc.</span>
 </footer>
 
 <script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
-  function animRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); }
-  animRing();
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%, -50%) scale(2)'; cursor.style.opacity = '0.5'; ring.style.width = '48px'; ring.style.height = '48px'; });
-    el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%, -50%) scale(1)'; cursor.style.opacity = '1'; ring.style.width = '32px'; ring.style.height = '32px'; });
-  });
-
   // Nav scroll
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
