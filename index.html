@@ -143,11 +143,12 @@
         }
 
         .hero-description {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             margin-bottom: 2.5rem;
             max-width: 600px;
             border-left: 3px solid var(--primary-purple);
             padding-left: 1.5rem;
+            color: var(--text-white);
         }
 
         .btn-group {
@@ -359,7 +360,7 @@
             font-weight: bold;
         }
 
-        /* --- PROJECTS (MODIFIÉ : LISTE VERTICALE) --- */
+        /* --- PROJECTS (LISTE VERTICALE) --- */
         #projects {
             background: var(--bg-card);
         }
@@ -377,7 +378,6 @@
             margin-bottom: 2rem;
         }
 
-        /* Chaque projet est une ligne complète */
         .project-row {
             display: flex;
             background: var(--bg-dark);
@@ -394,9 +394,8 @@
             border-color: var(--primary-purple);
         }
 
-        /* Conteneur image : Largeur fixe ou %, affichage complet */
         .project-image-box {
-            flex: 0 0 450px; /* Largeur fixe pour l'image */
+            flex: 0 0 450px;
             background: #000;
             display: flex;
             align-items: center;
@@ -408,7 +407,7 @@
         .project-image-box img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* L'image est entière, pas coupée */
+            object-fit: contain;
             display: block;
         }
 
@@ -621,6 +620,41 @@
             margin-bottom: 0.5rem;
         }
 
+        /* --- STAGE / OBJECTIF (NOUVELLE SECTION) --- */
+        #objective {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #2e1065 100%);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .objective-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(19, 15, 26, 0.6);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid var(--primary-purple);
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        .objective-box h3 {
+            color: var(--mauve-light);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .objective-box p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--text-white);
+        }
+
+        .highlight {
+            color: var(--primary-purple);
+            font-weight: 700;
+        }
+
         /* --- CONTACT --- */
         #contact {
             background: var(--bg-dark);
@@ -702,7 +736,7 @@
 
         /* Style pour le message de succès */
         #success-message {
-            display: none; /* Caché par défaut */
+            display: none;
             background: rgba(124, 58, 237, 0.1);
             border: 1px solid var(--primary-purple);
             color: var(--mauve-light);
@@ -735,11 +769,11 @@
             .project-image-box {
                 flex: none;
                 width: 100%;
-                height: 300px; /* Hauteur limitée sur mobile */
+                height: 300px;
                 padding: 0;
             }
             .project-image-box img {
-                object-fit: cover; /* Sur mobile on coupe un peu pour remplir si nécessaire */
+                object-fit: cover;
             }
         }
 
@@ -811,14 +845,16 @@
         <button class="menu-toggle"><i class="fas fa-bars"></i></button>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (MODIFIÉ) -->
     <section id="hero">
         <div class="hero-container">
             <div class="hero-text">
                 <p class="hero-subtitle">Ingénieure Systèmes d'Information & Big Data</p>
-                <h1>Khadija<br><span>El Merahy</span></h1>
+                <h1>Khadija <br><span>El Merahy</span></h1>
                 <div class="hero-description">
-                    À la recherche d’un stage (PFA) d’une durée de 2 mois afin de mettre en pratique mes compétences et contribuer à des projets à forte valeur ajoutée. Disponible à partir de mi-juin.
+                    Bienvenue sur mon portfolio ! <br>
+                    Découvrez mes projets, compétences et expériences qui démontrent ma capacité à transformer les données en solutions innovantes.
+                     Explorez mon parcours et n’hésitez pas à me contacter pour collaborer sur des projets passionnants ou discuter de futures opportunités professionnelles.
                 </div>
                 <div class="btn-group">
                     <a href="#contact" class="btn btn-primary">Me Contacter</a>
@@ -904,7 +940,7 @@
         </div>
     </section>
 
-    <!-- Projects Section (MODIFIÉ : LISTE VERTICALE) -->
+    <!-- Projects Section -->
     <section id="projects">
         <div class="section-header">
             <h2 class="section-title">Projets Académiques & Personnels</h2>
@@ -1091,7 +1127,7 @@
         </div>
     </section>
 
-    <!-- Education Section (Séparée) -->
+    <!-- Education Section -->
     <section id="education">
         <div class="section-header">
             <h2 class="section-title">Formation Académique</h2>
@@ -1110,7 +1146,7 @@
         </div>
     </section>
 
-    <!-- Certifications Section (Séparée) -->
+    <!-- Certifications Section -->
     <section id="certifications">
         <div class="section-header">
             <h2 class="section-title">Certifications</h2>
@@ -1168,6 +1204,21 @@
         </div>
     </section>
 
+    <!-- NOUVELLE SECTION : RECHERCHE DE STAGE (Avant Contact) -->
+    <section id="objective">
+        <div class="objective-box">
+            <h3>Recherche de Stage PFA</h3>
+            <p>
+                Je suis activement à la recherche d’un stage PFA d’une durée de <span class="highlight">2 mois</span>.
+                <br><br>
+                Mon objectif est de mettre en pratique mes compétences en Data Engineering et IA pour contribuer à des projets à forte valeur ajoutée.
+                <br>
+                <span class="highlight">Disponibilité : À partir de mi-juin</span>
+            </p>
+            <a href="#contact" class="btn btn-primary">Discutons de votre offre</a>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact">
         <div class="section-header">
@@ -1202,7 +1253,6 @@
                 </div>
             </div>
 
-            <!-- Formulaire avec ID pour JS -->
             <div id="form-wrapper">
                 <form class="contact-form" id="contact-form" action="https://formspree.io/f/xlgkbayv" method="POST">
                     <div class="form-group">
@@ -1215,12 +1265,11 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" name="message" class="form-control" required placeholder="Votre message pour une opportunité de stage..."></textarea>
+                        <textarea id="message" name="message" class="form-control" required placeholder="Votre message..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Envoyer le message</button>
                 </form>
                 
-                <!-- Message de succès caché par défaut -->
                 <div id="success-message">
                     <h3>Message Envoyé !</h3>
                     <p>Merci de m'avoir contacté. Je reviendrai vers vous dans les plus brefs délais.</p>
@@ -1249,12 +1298,12 @@
             });
         });
 
-        // Gestion du Formulaire (Afficher message, cacher formulaire)
+        // Gestion du Formulaire
         const form = document.getElementById("contact-form");
         const successMsg = document.getElementById("success-message");
 
         form.addEventListener("submit", function(event) {
-            event.preventDefault(); // Empêche le rechargement de la page
+            event.preventDefault();
             
             const data = new FormData(event.target);
             
@@ -1264,9 +1313,7 @@
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    // Cacher le formulaire
                     form.style.display = "none";
-                    // Afficher le message de succès
                     successMsg.style.display = "block";
                 } else {
                     alert("Une erreur est survenue lors de l'envoi.");
