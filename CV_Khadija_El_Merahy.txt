@@ -1,0 +1,134 @@
+KHADIJA EL MERAHY
+Data Engineer | AI Specialist | Cloud Architect
+
+─────────────────────────────────────────────────────────────────────
+
+CONTACT INFORMATION
+Email: elmerahykhadija700@gmail.com
+Phone: +212 656-442-062
+LinkedIn: linkedin.com/in/khadija-el-merahy
+GitHub: github.com/elmerahykhadija
+Location: Casablanca, Morocco
+
+─────────────────────────────────────────────────────────────────────
+
+PROFESSIONAL SUMMARY
+
+Passionate Data Engineer and AI specialist with strong expertise in designing and deploying end-to-end data solutions. Specialized in building scalable data pipelines, implementing machine learning systems, and architecting cloud-based analytics platforms. Proven track record in orchestrating complex ELT/ETL workflows, real-time streaming systems, and production-grade AI applications.
+
+─────────────────────────────────────────────────────────────────────
+
+CORE COMPETENCIES
+
+Data Engineering:
+• ELT/ETL Pipeline Development (Airflow, Spark, Kafka)
+• Data Modeling and dbt transformations
+• Real-time Streaming Architectures
+• Data Warehouse Design (Medallion Architecture)
+• Cloud Data Platforms (AWS, Snowflake)
+
+Artificial Intelligence & ML:
+• Machine Learning Model Development
+• LLM Integration and Fine-tuning
+• AI Agents and Autonomous Systems
+• Model Deployment and MLOps
+• Explainable AI (XAI) Techniques
+
+Cloud & Infrastructure:
+• AWS (EC2, S3, Lambda, EMR)
+• Containerization (Docker, Kubernetes basics)
+• CI/CD Pipeline Setup (GitHub Actions)
+• Infrastructure as Code principles
+• DevOps Best Practices
+
+Programming & Tools:
+• Python (Advanced), SQL, Java
+• FastAPI, Streamlit, Dash
+• Git, GitHub, Version Control
+• Linux/Command Line
+• Scientific Stack (Pandas, NumPy, Scikit-learn)
+
+─────────────────────────────────────────────────────────────────────
+
+PROFESSIONAL EXPERIENCE
+
+Stagiaire Data & IA
+Résidences Dar Saada | July 2025
+
+• Designed and implemented a comprehensive multi-agent system for automated data analysis encompassing data ingestion, cleansing, visualization, and expert querying via LLM
+• Developed advanced Python and MySQL solutions integrating large language models to automate complex analytical business processes
+• Created production-ready documentation and open-source deliverables published on GitHub
+• Technical Stack: Python, MySQL, LLMs, Multi-Agent Architecture
+
+─────────────────────────────────────────────────────────────────────
+
+KEY PROJECTS
+
+1. License Plate Recognition System (AI)
+   • YOLO-based detection and character recognition for Moroccan license plates
+   • End-to-end solution with Streamlit interface
+   • Technologies: Python, YOLO, Computer Vision, Streamlit
+
+2. MLOps HR Analytics Dashboard
+   • Complete MLOps pipeline for employee attrition prediction
+   • Interactive "What-If" scenarios with counterfactual explanations (DiCE)
+   • Technologies: Python, Prefect, MLflow, Dash, Docker
+
+3. Ticketmaster ELT Pipeline
+   • Production ELT architecture handling 50k+ daily events
+   • Airflow orchestration, dbt modeling, AWS deployment
+   • GitHub Actions CI/CD, Docker containerization
+   • Technologies: Airflow, dbt, Kafka, AWS, Docker
+
+4. Real-time Ads Streaming System
+   • Real-time data collection and processing from Avito and MarocAnnonces
+   • Kafka message streaming, Spark processing, interactive filtering
+   • Technologies: Kafka, Spark, MySQL, Streamlit
+
+5. E-Commerce ETL Pipeline
+   • Transformation of 100k+ e-commerce transactions
+   • Medallion Architecture (Bronze/Silver/Gold layers)
+   • Performance optimization and data quality assurance
+   • Technologies: Apache Spark, dbt, Snowflake, Python
+
+6. Data Analysis & Visualization
+   • Exploratory data analysis with interactive visualizations
+   • Pattern identification, anomaly detection, actionable insights
+   • Technologies: Python, Pandas, Plotly, Streamlit
+
+─────────────────────────────────────────────────────────────────────
+
+EDUCATION
+
+Ingénieur d'État (Master's Degree)
+École Nationale des Sciences Appliquées de Berrechid (ENSA Berrechid)
+Specialization: Information Systems & Big Data
+Expected Graduation: 2027
+
+─────────────────────────────────────────────────────────────────────
+
+CERTIFICATIONS
+
+• Data Science & ML MasterClass (Udemy)
+• Introduction to Apache Airflow (DataCamp)
+• Introduction to dbt (Data Build Tool) (DataCamp)
+
+─────────────────────────────────────────────────────────────────────
+
+LANGUAGES
+
+• French (Native)
+• English (Professional Fluency)
+• Arabic (Native)
+
+─────────────────────────────────────────────────────────────────────
+
+CAREER OBJECTIVES
+
+Seeking a challenging internship or full-time position in Data Engineering, Cloud Architecture, or AI Systems. Interested in opportunities to contribute to innovative projects involving:
+• Large-scale data infrastructure
+• Production ML/AI systems
+• Cloud-native architectures
+• Real-time data streaming
+
+Available for positions in Casablanca or remote work arrangements.
