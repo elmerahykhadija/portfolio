@@ -51,6 +51,56 @@
             list-style: none;
         }
 
+        /* --- ANIMATION D'ENTRÉE PAGE --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Animation pour la navigation */
+        nav {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Animation pour chaque section */
+        section {
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        /* Délais progressifs pour les sections */
+        #hero { animation-delay: 0s; }
+        #about { animation-delay: 0.1s; }
+        #services { animation-delay: 0.2s; }
+        #experience { animation-delay: 0.3s; }
+        #projects { animation-delay: 0.4s; }
+        #skills { animation-delay: 0.5s; }
+        #education { animation-delay: 0.6s; }
+        #certifications { animation-delay: 0.7s; }
+        #languages { animation-delay: 0.8s; }
+        #objective { animation-delay: 0.9s; }
+        #contact { animation-delay: 1s; }
+        footer { animation: fadeInUp 0.6s ease-out 1.1s both; }
+
+        /* Animation pour les cartes au survol déjà existantes */
+        
         /* --- NAVIGATION --- */
         nav {
             position: fixed;
@@ -204,6 +254,7 @@
             border: 3px solid var(--primary-purple);
             box-shadow: 0 0 30px rgba(124, 58, 237, 0.2);
             background-color: var(--bg-card);
+            animation: fadeInScale 0.8s ease-out 0.2s both;
         }
 
         /* --- SECTIONS GÉNÉRALES --- */
@@ -854,7 +905,7 @@
                 <div class="hero-description">
                     Bienvenue sur mon portfolio ! <br>
                     Découvrez mes projets, compétences et expériences qui démontrent ma capacité à transformer les données en solutions innovantes.
-                     Explorez mon parcours et n’hésitez pas à me contacter pour collaborer sur des projets passionnants ou discuter de futures opportunités professionnelles.
+                     Explorez mon parcours et n'hésitez pas à me contacter pour collaborer sur des projets passionnants ou discuter de futures opportunités professionnelles.
                 </div>
                 <div class="btn-group">
                     <a href="#contact" class="btn btn-primary">Me Contacter</a>
@@ -874,10 +925,10 @@
         </div>
         <div class="about-content">
             <div class="about-text">
-                <p>Je m’appelle <strong>Khadija El Merahy</strong> et je suis actuellement étudiante en <strong>quatrième année du cycle d’ingénieur en Systèmes d’Information et Big Data</strong> à l’ENSA de Berrechid. Passionnée par les technologies de la donnée et l’innovation numérique, je me spécialise dans les domaines du <strong>Data Engineering</strong>, de l’<strong>Intelligence Artificielle</strong> et de la <strong>Cloud Architecture</strong>.</p>
-                <p>Au cours de mon parcours académique et de mes projets, j’ai développé des compétences solides dans la <strong>collecte, le traitement, l’analyse et la valorisation des données</strong>. J’interviens sur l’ensemble du cycle de vie de la donnée, depuis l’ingestion et la transformation jusqu’à la mise à disposition des informations pour l’aide à la décision et les applications intelligentes.</p>
-                <p>Je maîtrise la conception et l’<strong>orchestration de pipelines de données</strong>, l’intégration et le déploiement de <strong>solutions d’Intelligence Artificielle en production</strong>, ainsi que la mise en place d’<strong>architectures analytiques scalables</strong> adaptées aux environnements modernes. Mon intérêt pour le Cloud me permet également de concevoir des infrastructures performantes, sécurisées et évolutives.</p>
-                <p>Mon approche repose sur la <strong>rigueur technique</strong>, l’<strong>automatisation des processus</strong>, l’<strong>optimisation des performances</strong> et la création de solutions fiables répondant à des besoins métiers concrets.</p>
+                <p>Je m'appelle <strong>Khadija El Merahy</strong> et je suis actuellement étudiante en <strong>quatrième année du cycle d'ingénieur en Systèmes d'Information et Big Data</strong> à l'ENSA de Berrechid. Passionnée par les technologies de la donnée et l'innovation numérique, je me spécialise dans les domaines du <strong>Data Engineering</strong>, de l'<strong>Intelligence Artificielle</strong> et de la <strong>Cloud Architecture</strong>.</p>
+                <p>Au cours de mon parcours académique et de mes projets, j'ai développé des compétences solides dans la <strong>collecte, le traitement, l'analyse et la valorisation des données</strong>. J'interviens sur l'ensemble du cycle de vie de la donnée, depuis l'ingestion et la transformation jusqu'à la mise à disposition des informations pour l'aide à la décision et les applications intelligentes.</p>
+                <p>Je maîtrise la conception et l'<strong>orchestration de pipelines de données</strong>, l'intégration et le déploiement de <strong>solutions d'Intelligence Artificielle en production</strong>, ainsi que la mise en place d'<strong>architectures analytiques scalables</strong> adaptées aux environnements modernes. Mon intérêt pour le Cloud me permet également de concevoir des infrastructures performantes, sécurisées et évolutives.</p>
+                <p>Mon approche repose sur la <strong>rigueur technique</strong>, l'<strong>automatisation des processus</strong>, l'<strong>optimisation des performances</strong> et la création de solutions fiables répondant à des besoins métiers concrets.</p>
             </div>
         </div>
     </section>
@@ -931,9 +982,9 @@
                     <span class="exp-date">Juillet 2025</span>
                 </div>
                 <ul class="exp-details">
-                    <li>Développement d’un <strong>système multi-agents (5 agents)</strong> pour l’analyse automatisée de données : ingestion, nettoyage, visualisation et interrogation via LLM (IA).</li>
+                    <li>Développement d'un <strong>système multi-agents (5 agents)</strong> pour l'analyse automatisée de données : ingestion, nettoyage, visualisation et interrogation via LLM (IA).</li>
                     <li>Automatisation des processus de préparation des données, réduisant le temps de traitement de <strong>70%</strong>.</li>
-                    <li>Génération rapide de <strong>tableaux de bord interactifs Power BI</strong>, accélérant l’analyse des données et le reporting.</li>
+                    <li>Génération rapide de <strong>tableaux de bord interactifs Power BI</strong>, accélérant l'analyse des données et le reporting.</li>
                     <li>Technologies : Python, MySQL, LLMs, Agno, API REST, Power BI.</li>
                 </ul>
             </div>
@@ -956,7 +1007,7 @@
                 </div>
                 <div class="project-info">
                     <h4 class="project-title">Pipeline ELT de Bout en Bout Cloud-Native</h4>
-                    <p class="project-desc">Construction d’un pipeline évolutif de bout en bout transformant des données brutes (+50k par jour) issues d’API REST publiques en ensembles de données prêts pour la BI à l’aide d’Airflow, dbt, Kafka et Snowflake. Mise en œuvre d’une automatisation CI/CD rigoureuse avec GitHub Actions, conteneurs Docker et déploiement évolutif sur l’infrastructure cloud AWS EC2.</p>
+                    <p class="project-desc">Construction d'un pipeline évolutif de bout en bout transformant des données brutes (+50k par jour) issues d'API REST publiques en ensembles de données prêts pour la BI à l'aide d'Airflow, dbt, Kafka et Snowflake. Mise en œuvre d'une automatisation CI/CD rigoureuse avec GitHub Actions, conteneurs Docker et déploiement évolutif sur l'infrastructure cloud AWS EC2.</p>
                     <div class="tech-stack">
                         <span class="tech-badge">Airflow</span>
                         <span class="tech-badge">Kafka</span>
@@ -975,7 +1026,7 @@
                 </div>
                 <div class="project-info">
                     <h4 class="project-title">Architecture Médaillon E-commerce</h4>
-                    <p class="project-desc">Développement d’un pipeline ELT distribué et robuste pour transformer des données e-commerce à grande échelle (+200k enregistrements). Conception d’une architecture Médaillon multicouche utilisant Airflow, Apache Spark, AWS S3 et Snowflake pour assurer un traitement des données évolutif et fiable.</p>
+                    <p class="project-desc">Développement d'un pipeline ELT distribué et robuste pour transformer des données e-commerce à grande échelle (+200k enregistrements). Conception d'une architecture Médaillon multicouche utilisant Airflow, Apache Spark, AWS S3 et Snowflake pour assurer un traitement des données évolutif et fiable.</p>
                     <div class="tech-stack">
                         <span class="tech-badge">Airflow</span>
                         <span class="tech-badge">Spark</span>
@@ -1015,8 +1066,8 @@
                     <img src="img/mlops.png" alt="HR MLOps Solution">
                 </div>
                 <div class="project-info">
-                    <h4 class="project-title">Solution MLOps pour l’Analyse Prédictive RH</h4>
-                    <p class="project-desc">Conception et déploiement d’un pipeline MLOps d’entreprise de bout en bout pour l’analyse prédictive et la simulation de rétention des talents. Entraînement de modèles sur plus de 1 400 profils avec MLflow, et intégration de techniques d’explicabilité avec DiCE.</p>
+                    <h4 class="project-title">Solution MLOps pour l'Analyse Prédictive RH</h4>
+                    <p class="project-desc">Conception et déploiement d'un pipeline MLOps d'entreprise de bout en bout pour l'analyse prédictive et la simulation de rétention des talents. Entraînement de modèles sur plus de 1 400 profils avec MLflow, et intégration de techniques d'explicabilité avec DiCE.</p>
                     <div class="tech-stack">
                         <span class="tech-badge">Prefect</span>
                         <span class="tech-badge">MLflow</span>
@@ -1065,7 +1116,9 @@
                     <span class="skill-tag">dbt</span>
                     <span class="skill-tag">Snowflake</span>
                     <span class="skill-tag">Hadoop</span>
+                    <span class="skill-tag">RabbitMQ</span>
                     <span class="skill-tag">Great Expectations</span>
+                    <span class="skill-tag">Web scraping</span>
                 </div>
             </div>
 
@@ -1083,25 +1136,24 @@
             <div class="skill-category">
                 <h4>Bases de Données</h4>
                 <div class="skill-tags">
-                    <span class="skill-tag">PostgreSQL</span>
+            
                     <span class="skill-tag">MySQL</span>
                     <span class="skill-tag">MongoDB</span>
                     <span class="skill-tag">HBase</span>
                     <span class="skill-tag">Oracle DB</span>
+                    <span class="skill-tag">Apache Hive</span>
                 </div>
             </div>
 
             <div class="skill-category">
                 <h4>Programmation</h4>
                 <div class="skill-tags">
-                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Python (Langage principal)</span>
                     <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Java (OOP, algorithmes de base)</span>
                     <span class="skill-tag">C</span>
                     <span class="skill-tag">Git</span>
                     <span class="skill-tag">Bash</span>
-                    <span class="skill-tag">Pandas</span>
-                    <span class="skill-tag">NumPy</span>
                 </div>
             </div>
 
@@ -1113,6 +1165,9 @@
                     <span class="skill-tag">Evidently AI</span>
                     <span class="skill-tag">LangChain</span>
                     <span class="skill-tag">LLMs</span>
+                    <span class="skill-tag">Chatbot</span>
+                    <span class="skill-tag">Chatbot RAG</span>
+                    <span class="skill-tag">Agentic AI</span>
                 </div>
             </div>
 
@@ -1120,7 +1175,9 @@
                 <h4>Business Intelligence</h4>
                 <div class="skill-tags">
                     <span class="skill-tag">Power BI</span>
-                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Streamlit</span>
+                    <span class="skill-tag">Dash</span>
+                    <span class="skill-tag">Data Visualization </span>
                 </div>
             </div>
             
@@ -1134,7 +1191,7 @@
         </div>
         <div class="edu-grid">
             <div class="edu-card">
-                <h4>Cycle d’ingénierie Systèmes d’Information et Big Data</h4>
+                <h4>Cycle d'ingénierie Systèmes d'Information et Big Data</h4>
                 <span class="edu-school">École Nationale des Sciences Appliquées de Berrechid (ENSA)</span>
                 <span class="edu-date">2024 - Présent (4ème année actuelle)</span>
             </div>
@@ -1175,7 +1232,7 @@
                 <div>
                     <h4>Introduction to dbt</h4>
                     <span class="cert-provider">DataCamp</span>
-                    <p style="font-size: 0.9rem;">Transformation et modélisation des données pour l’analytique.</p>
+                    <p style="font-size: 0.9rem;">Transformation et modélisation des données pour l'analytique.</p>
                 </div>
                 <a href="https://www.datacamp.com/statement-of-accomplishment/course/c0d67a3f9261e55392edc12bafa77837a9f90e43?raw=1" target="_blank" class="cert-link">Voir le certificat</a>
             </div>
@@ -1209,7 +1266,7 @@
         <div class="objective-box">
             <h3>Recherche de Stage PFA</h3>
             <p>
-                Je suis activement à la recherche d’un stage PFA d’une durée de <span class="highlight">2 mois</span>.
+                Je suis activement à la recherche d'un stage PFA d'une durée de <span class="highlight">2 mois</span>.
                 <br><br>
                 Mon objectif est de mettre en pratique mes compétences en Data Engineering et IA pour contribuer à des projets à forte valeur ajoutée.
                 <br>
