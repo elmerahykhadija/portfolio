@@ -6,6 +6,8 @@
     <title>Khadija El Merahy - Data Engineer & AI</title>
     <!-- Polices Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/png" href="img/profile.jpeg">
     <style>
         /* --- PALETTE VIOLET MAUVE DARK --- */
@@ -748,10 +750,29 @@
         .info-value a {
             color: var(--text-white);
             font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .info-value a i {
+            color: var(--primary-purple);
+            font-size: 1.2rem;
+            width: 24px;
         }
 
         .info-value a:hover {
             color: var(--mauve-light);
+        }
+
+        .info-value a:hover i {
+            color: var(--mauve-light);
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         .form-group {
@@ -1286,26 +1307,40 @@
                 <h3>Informations de contact</h3>
                 
                 <div class="info-item">
-                    <span class="info-label">Téléphone</span>
+                    <span class="info-label"><i class="fas fa-phone-alt"></i> Téléphone</span>
                     <div class="info-value">
-                        <a href="tel:+212656442062">+212 656 44 20 62</a>
+                        <a href="tel:+212656442062">
+                            <i class="fas fa-phone-alt"></i>
+                            +212 656 44 20 62
+                        </a>
                     </div>
                 </div>
                 
                 <div class="info-item">
-                    <span class="info-label">Email</span>
+                    <span class="info-label"><i class="fas fa-envelope"></i> Email</span>
                     <div class="info-value">
-                        <a href="mailto:elmerahykhadija700@gmail.com">elmerahykhadija700@gmail.com</a>
+                        <a href="mailto:elmerahykhadija700@gmail.com">
+                            <i class="fas fa-envelope"></i>
+                            elmerahykhadija700@gmail.com
+                        </a>
                     </div>
                 </div>
                 
                 <div class="info-item">
-                    <span class="info-label">Réseaux</span>
-                    <div class="info-value">
-                        <a href="https://www.linkedin.com/in/khadija-el-merahy" target="_blank">LinkedIn Profile</a>
-                    </div>
-                    <div class="info-value" style="margin-top: 10px;">
-                        <a href="https://github.com/elmerahykhadija" target="_blank">GitHub Profile</a>
+                    <span class="info-label"><i class="fas fa-share-alt"></i> Réseaux</span>
+                    <div class="social-links">
+                        <div class="info-value">
+                            <a href="https://www.linkedin.com/in/khadija-el-merahy" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                                LinkedIn Profile
+                            </a>
+                        </div>
+                        <div class="info-value">
+                            <a href="https://github.com/elmerahykhadija" target="_blank">
+                                <i class="fab fa-github"></i>
+                                GitHub Profile
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
