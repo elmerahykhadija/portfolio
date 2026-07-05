@@ -369,35 +369,53 @@
         }
 
         .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 15px;
+}
 
-        .exp-role {
-            font-size: 1.4rem;
-            color: var(--text-white);
-        }
+.exp-info {
+    display: flex;
+    flex-direction: column;
+}
 
-        .exp-company {
-            color: var(--primary-purple);
-            font-weight: 600;
-            display: block;
-            margin-top: 0.2rem;
-        }
+.exp-role {
+    margin: 0;
+    font-size: 1.3rem;
+}
 
-        .exp-date {
-            background: rgba(124, 58, 237, 0.1);
-            color: var(--mauve-light);
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
+.company-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.exp-company {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.company-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e5e5e5;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.exp-date {
+    white-space: nowrap;
+    font-weight: 600;
+    color: #777;
+}
+        
 
         .exp-details li {
             margin-bottom: 0.6rem;
@@ -924,10 +942,9 @@
                 <p class="hero-subtitle">Ingénieure Systèmes d'Information & Big Data</p>
                 <h1>Khadija <br><span>El Merahy</span></h1>
                 <div class="hero-description">
-                    Bienvenue sur mon portfolio ! <br>
-                    Découvrez mes projets, compétences et expériences qui démontrent ma capacité à transformer les données en solutions innovantes.
-                     Explorez mon parcours et n'hésitez pas à me contacter pour collaborer sur des projets passionnants ou discuter de futures opportunités professionnelles.
-                </div>
+    Bienvenue sur mon portfolio ! <br>
+    Découvrez mes projets, compétences et expériences qui illustrent ma capacité à transformer les données en solutions innovantes. Explorez mon parcours et contactez-moi pour collaborer sur des projets passionnants ou échanger sur des opportunités professionnelles.
+</div>
                 <div class="btn-group">
                     <a href="#contact" class="btn btn-primary">Me Contacter</a>
                     <a href="#projects" class="btn btn-outline">Voir Projets</a>
@@ -945,12 +962,12 @@
             <h2 class="section-title">À Propos</h2>
         </div>
         <div class="about-content">
-            <div class="about-text">
-                <p>Je m'appelle <strong>Khadija El Merahy</strong> et je suis actuellement étudiante en <strong>quatrième année du cycle d'ingénieur en Systèmes d'Information et Big Data</strong> à l'ENSA de Berrechid. Passionnée par les technologies de la donnée et l'innovation numérique, je me spécialise dans les domaines du <strong>Data Engineering</strong>, de l'<strong>Intelligence Artificielle</strong> et de la <strong>Cloud Architecture</strong>.</p>
-                <p>Au cours de mon parcours académique et de mes projets, j'ai développé des compétences solides dans la <strong>collecte, le traitement, l'analyse et la valorisation des données</strong>. J'interviens sur l'ensemble du cycle de vie de la donnée, depuis l'ingestion et la transformation jusqu'à la mise à disposition des informations pour l'aide à la décision et les applications intelligentes.</p>
-                <p>Je maîtrise la conception et l'<strong>orchestration de pipelines de données</strong>, l'intégration et le déploiement de <strong>solutions d'Intelligence Artificielle en production</strong>, ainsi que la mise en place d'<strong>architectures analytiques scalables</strong> adaptées aux environnements modernes. Mon intérêt pour le Cloud me permet également de concevoir des infrastructures performantes, sécurisées et évolutives.</p>
-                <p>Mon approche repose sur la <strong>rigueur technique</strong>, l'<strong>automatisation des processus</strong>, l'<strong>optimisation des performances</strong> et la création de solutions fiables répondant à des besoins métiers concrets.</p>
-            </div>
+           <div class="about-text">
+    <p>Je m'appelle <strong>Khadija El Merahy</strong>, étudiante en <strong>cycle d'ingénieur Systèmes d'Information et Big Data</strong> à l'ENSA de Berrechid. Passionnée par les technologies de la donnée, je me spécialise en <strong>Data Engineering</strong>, <strong>Intelligence Artificielle</strong> et <strong>Cloud Architecture</strong>.</p>
+    <p>Mon expertise couvre l'ensemble du cycle de vie de la donnée : <strong>collecte, traitement, analyse et valorisation</strong>, de l'ingestion jusqu'à l'aide à la décision et aux applications intelligentes.</p>
+    <p>Je conçois et orchestre des <strong>pipelines de données</strong>, déploie des <strong>solutions d'IA en production</strong> et conçois des <strong>architectures analytiques scalables</strong> sur des environnements modernes.</p>
+    <p>Ma démarche allie <strong>rigueur technique</strong>, <strong>automatisation</strong>, <strong>optimisation des performances</strong> et adéquation aux besoins métiers.</p>
+</div>
         </div>
     </section>
 
@@ -961,28 +978,22 @@
         </div>
         <div class="services-grid">
             <div class="service-card">
-                <h4>Data Engineering</h4>
-                <p>Conception de pipelines ETL/ELT, ingestion de données, orchestration de workflows et automatisation des traitements avec Apache Spark, Kafka, Prefect et Airflow.</p>
+                <h4>Data Engineering et Big Data</h4>
+                <p>Conception de pipelines des données, ingestion de données, orchestration et automatisation des traitements pour des volumes massifs de données,Traitement en continu</p>
             </div>
             <div class="service-card">
-                <h4>Intelligence Artificielle</h4>
-                <p>Développement et intégration de modèles de Machine Learning, solutions basées sur les LLMs, agents IA et systèmes intelligents de bout en bout.</p>
+                <h4>Intelligence Artificielle et Machine Learning</h4>
+                <p>Développement et déploiement de modèles prédictifs, systèmes intelligents et solutions d'IA adaptées à vos besoins métier.</p>
             </div>
+            
             <div class="service-card">
-                <h4>Traitement Temps Réel</h4>
-                <p>Mise en œuvre d'architectures de stream processing permettant le traitement et l'analyse de données en temps réel avec une faible latence.</p>
+                <h4>Infrastructure Cloud</h4>
+                <p>Déploiement d'applications et de pipelines sur le cloud, automatisation et gestion d'environnements modernes et scalables.</p>
             </div>
+           
             <div class="service-card">
-                <h4>Cloud & DevOps</h4>
-                <p>Déploiement d'applications et de pipelines sur le cloud, containerisation avec Docker, automatisation CI/CD et gestion d'infrastructures modernes.</p>
-            </div>
-            <div class="service-card">
-                <h4>Data Warehousing</h4>
-                <p>Conception d'entrepôts de données, architectures Data Lake et modélisation analytique avec dbt et l'approche Medallion.</p>
-            </div>
-            <div class="service-card">
-                <h4>Data Analytics & BI</h4>
-                <p>Analyse de données, création de tableaux de bord interactifs et visualisations avec Power BI, Streamlit et Dash pour faciliter la prise de décision.</p>
+                <h4>Data Analytics et Business Intelligence</h4>
+                <p>Analyse exploratoire,Modélisation des données, création de tableaux de bord et visualisations interactives pour éclairer la prise de décision.</p>
             </div>
         </div>
     </section>
@@ -993,22 +1004,57 @@
             <h2 class="section-title">Expérience Professionnelle</h2>
         </div>
         <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="exp-header">
-                    <div>
-                        <h3 class="exp-role">Stagiaire Data & IA</h3>
-                        <span class="exp-company">Résidences Dar Saada</span>
-                    </div>
-                    <span class="exp-date">Juillet 2025</span>
+    <div class="timeline-item">
+        <div class="timeline-dot"></div>
+
+        <div class="exp-header">
+            <div class="exp-info">
+                <h3 class="exp-role">Stagiaire en Data Engineering</h3>
+
+                <div class="company-row">
+                    <span class="exp-company">Banque Centrale Populaire-BCP</span>
+                    <img src="img/bcp.jpg"
+                         alt="Banque Centrale Populaire"
+                         class="company-logo">
                 </div>
-                <ul class="exp-details">
-                    <li>Développement d'un <strong>système multi-agents (5 agents)</strong> pour l'analyse automatisée de données : ingestion, nettoyage, visualisation et interrogation via LLM (IA).</li>
-                    <li>Automatisation des processus de préparation des données, réduisant le temps de traitement de <strong>70%</strong>.</li>
-                    <li>Génération rapide de <strong>tableaux de bord interactifs Power BI</strong>, accélérant l'analyse des données et le reporting.</li>
-                    <li>Technologies : Python, MySQL, LLMs, Agno, API REST, Power BI.</li>
-                </ul>
             </div>
+
+            <span class="exp-date">Juillet 2026-Aujourd'hui</span>
+        </div>
+
+        <ul class="exp-details">
+    <li>Stage au sein de l'entité <strong>Data Engineering, Data Mining & Delivery</strong> de la Banque Centrale Populaire.</li>
+    <li>Participation à la conception et au développement d'un projet combinant les technologies <strong>Big Data</strong> et <strong>Machine Learning</strong>.</li>
+    
+</ul>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-dot"></div>
+
+        <div class="exp-header">
+            <div class="exp-info">
+                <h3 class="exp-role">Stagiaire Data & IA</h3>
+
+                <div class="company-row">
+                    <span class="exp-company">Résidences Dar Saada</span>
+                    <img src="img/res-dar-saada--600.png"
+                         alt="Résidences Dar Saada"
+                         class="company-logo">
+                </div>
+            </div>
+
+            <span class="exp-date">Juillet 2025</span>
+        </div>
+
+        <ul class="exp-details">
+            <li>Développement d'un <strong>système multi-agents (5 agents)</strong> pour l'analyse automatisée de données : ingestion, nettoyage, visualisation et interrogation via LLM (IA).</li>
+            <li>Automatisation des processus de préparation des données, réduisant le temps de traitement de <strong>70%</strong>.</li>
+            <li>Génération rapide des <strong>visualisations</strong>, accélérant l'analyse des données et le reporting.</li>
+            <li>Technologies : Python, MySQL, LLMs, Agno, Fastapi.</li>
+        </ul>
+    </div>
+
+</div>
         </div>
     </section>
 
@@ -1333,13 +1379,14 @@
     <!-- NOUVELLE SECTION : RECHERCHE DE STAGE (Avant Contact) -->
     <section id="objective">
         <div class="objective-box">
-            <h3>Recherche de Stage PFA</h3>
+            <h3>Recherche de Stage PFE & Alternance</h3>
             <p>
-                Je suis activement à la recherche d'un stage PFA d'une durée de <span class="highlight">2 mois</span>.
+                Actuellement étudiante en Data Engineering & IA, je recherche une alternance à partir de septembre ainsi qu'un stage PFE
+à partir de janvier.
                 <br><br>
                 Mon objectif est de mettre en pratique mes compétences en Data Engineering et IA pour contribuer à des projets à forte valeur ajoutée.
                 <br>
-                <span class="highlight">Disponibilité : À partir de mi-juin</span>
+                <span class="highlight">Disponibilité : <br>Septembre 2026 (Alternance) et Janvier 2027 (Stage PFE)></span>
             </p>
             <a href="#contact" class="btn btn-primary">Discutons de votre offre</a>
         </div>
