@@ -1212,19 +1212,24 @@
             .hero-text h1 {
                 font-size: 3.8rem;
             }
-
-            .project-row {
-                flex-direction: column;
-            }
-
-            .project-image-box {
-                flex: none;
-                width: 100%;
-                height: 320px;
-            }
         }
 
         @media (max-width: 768px) {
+
+            /* General */
+            section {
+                padding: 4.5rem 5%;
+            }
+
+            .section-header {
+                margin-bottom: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 2.1rem;
+            }
+
+            /* Navigation */
             nav {
                 padding: 1rem 5%;
             }
@@ -1253,14 +1258,19 @@
                 display: flex;
             }
 
+            /* Hero */
+            #hero {
+                padding: 110px 5% 60px;
+            }
+
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 3rem;
+                gap: 2.5rem;
             }
 
             .hero-text h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
 
             .hero-description {
@@ -1269,20 +1279,114 @@
                 border-bottom: 2px solid var(--primary-burgundy);
                 padding-bottom: 1.5rem;
                 padding-left: 0;
+                font-size: 1rem;
             }
 
             .btn-group {
                 justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
             }
 
             .profile-img {
-                width: 280px;
-                height: 280px;
+                width: 250px;
+                height: 250px;
+                max-width: 100%;
             }
 
+            /* Services */
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            /* Experience Timeline */
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item {
+                padding-left: 0.8rem;
+                margin-bottom: 3rem;
+            }
+
+            .timeline-dot {
+                left: -2rem;
+            }
+
+            .exp-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .exp-date {
+                align-self: flex-start;
+            }
+
+            /* Projects */
+            .project-info {
+                padding: 1.8rem;
+            }
+
+            /* Education Timeline */
+            .edu-timeline {
+                padding-left: 1.5rem;
+            }
+
+            .edu-node {
+                margin-bottom: 2.5rem;
+            }
+
+            .edu-node::before {
+                left: -1.85rem;
+            }
+
+            .edu-content {
+                padding: 1.5rem;
+            }
+
+            .edu-content h4 {
+                font-size: 1.15rem;
+            }
+
+            .edu-school {
+                font-size: 0.95rem;
+            }
+
+            /* Opportunities */
+            .opportunity-cards {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .opp-card {
+                padding: 1.8rem 1.5rem;
+            }
+
+            .opp-card h4 {
+                font-size: 1.2rem;
+            }
+
+            /* Contact */
             .contact-container {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 2.5rem;
+            }
+
+            .contact-info-box {
+                padding: 2rem 1.5rem;
+            }
+
+            /* Lightbox Modal Mobile */
+            .modal-content {
+                max-width: 95%;
+                max-height: 85vh;
+            }
+
+            .close-modal {
+                top: 15px;
+                right: 20px;
+                font-size: 35px;
             }
         }
 
