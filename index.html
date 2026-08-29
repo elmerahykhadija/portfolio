@@ -449,7 +449,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2.5rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -624,7 +624,10 @@
         }
 
         .project-row {
-            display: block;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
             background: var(--bg-card);
             border-radius: 20px;
             overflow: hidden;
@@ -645,6 +648,15 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
         }
 
         .project-links {
@@ -1295,8 +1307,58 @@
             }
 
             /* Services */
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
             .service-card {
                 padding: 2rem 1.5rem;
+            }
+
+            /* Projects responsive: stack image + info on small screens */
+            .project-row {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-img img {
+                max-height: 260px;
+                object-fit: cover;
+            }
+
+            /* Mobile project adjustments */
+            .project-img {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .project-img img {
+                width: 100%;
+                max-width: 520px;
+                height: auto;
+                border-radius: 12px;
+            }
+
+            .project-info {
+                padding: 1.2rem 0.5rem;
+            }
+
+            .project-links {
+                display: flex;
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+
+            .project-links .project-link {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 0.85rem 1rem;
+                border-radius: 12px;
+                background: var(--primary-burgundy);
+                color: var(--btn-text);
+                text-decoration: none;
             }
 
             /* Experience Timeline */
@@ -1491,9 +1553,8 @@
                 <h1>Khadija <br><span>El Merahy</span></h1>
                 <div class="hero-description">
                     Bienvenue sur mon portfolio ! <br>
-                    Découvrez mes projets, compétences et expériences qui illustrent ma capacité à transformer les
-                    données en solutions innovantes. Explorez mon parcours et contactez-moi pour collaborer sur des
-                    projets passionnants ou échanger sur des opportunités professionnelles.
+Découvrez mes projets, compétences et expériences en Data & IA, et explorez mon parcours professionnel.
+
                 </div>
                 <div class="btn-group">
                     <a href="#contact" class="btn btn-primary">Me Contacter</a>
@@ -1513,7 +1574,7 @@
         </div>
         <div class="about-content">
             <div class="about-text">
-                <p>Je m'appelle <strong>Khadija El Merahy</strong>, étudiante en <strong>cycle d'ingénieur Systèmes
+                <p>Je m'appelle <strong>Khadija El Merahy</strong>, étudiante en <strong>dernière année cycle d'ingénieur Systèmes
                         d'Information et Big Data</strong> à l'ENSA de Berrechid. Passionnée par les technologies de la
                     donnée, je me spécialise en <strong>Data Engineering</strong>, <strong>Intelligence
                         Artificielle</strong> et <strong>Cloud Architecture</strong>.</p>
@@ -1541,37 +1602,35 @@
                 <p>
                     • Conception et développement de pipelines ETL/ELT<br>
                     • Ingestion et traitement de flux massifs de données<br>
-                    • Orchestration et automatisation des traitements<br>
-                    • Ingestion et streaming de données en temps réel
+                    • Traitement des données par batch et en temps réel<br>
+                    •creation de solutions Big Data scalables<br>
                 </p>
             </div>
             <div class="service-card">
                 <h4>Intelligence Artificielle & ML</h4>
                 <p>
                     • Développement et entraînement de modèles prédictifs<br>
-                    • Conception de systèmes intelligents (Computer Vision, NLP)<br>
                     • Déploiement et intégration de modèles en production (MLOps)<br>
-                    • Évaluation et explicabilité des modèles d'IA (DiCE, SHAP)
+                    • création de Modèles d’IA avancés et applications propulsées par les LLM (𝐀𝐠𝐞𝐧𝐭𝐬, 𝐑𝐀𝐆, 𝐂𝐡𝐚𝐭𝐛𝐨𝐭𝐬)
                 </p>
             </div>
 
             <div class="service-card">
                 <h4>Infrastructure Cloud & DevOps</h4>
                 <p>
-                    • Déploiement de pipelines sur plateformes Cloud (AWS)<br>
+                    • Déploiement de pipelines sur plateformes Cloud <br>
                     • Conteneurisation et isolation des environnements (Docker)<br>
                     • Mise en place de chaînes d'intégration et déploiement continu (CI/CD)<br>
-                    • Conception d'architectures scalables et résilientes
+                    
                 </p>
             </div>
 
             <div class="service-card">
                 <h4>Data Analytics & Business Intelligence</h4>
                 <p>
+                    •business intelligence et analyse de données pour la prise de décision<br>
                     • Analyse exploratoire et modélisation des données<br>
-                    • Création de tableaux de bord interactifs (Streamlit, Dash)<br>
-                    • Visualisation et restitution des indicateurs clés (KPIs)<br>
-                    • Aide à la prise de décision stratégique par la donnée
+                    • Création de tableaux de bord interactifs<br>
                 </p>
             </div>
         </div>
@@ -1588,7 +1647,7 @@
 
                 <div class="exp-header">
                     <div class="exp-info">
-                        <h3 class="exp-role">Stagiaire en Data Engineering</h3>
+                        <h3 class="exp-role">Stagiaire en Data Engineering & ML</h3>
 
                         <div class="company-row">
                             <span class="exp-company">Banque Centrale Populaire-BCP</span>
@@ -1596,16 +1655,16 @@
                         </div>
                     </div>
 
-                    <span class="exp-date">Juillet 2026-Aujourd'hui</span>
+                    <span class="exp-date">Juillet 2026-Août 2026</span>
                 </div>
 
                 <ul class="exp-details">
-                    <li>Stage au sein de l'entité <strong>Data Engineering, Data Mining & Delivery</strong> de la Banque
-                        Centrale Populaire.</li>
-                    <li>Participation à la conception et au développement d'un projet combinant les technologies
-                        <strong>Big Data</strong> et <strong>Machine Learning</strong>.
-                    </li>
-
+                    <li>Architecture Médaillon Big Data <strong>(Bronze / Silver / Gold)</strong> pour le traitement de plus de 
+                        <strong>770M</strong> de
+                        transactions bancaires sur <strong>~3M</strong> de clients, utilisée pour le feature engineering.</li>
+                    <li>Développement et optimisation d’un modèle de scoring des clients éligibles à la souscription aux
+                        produits d’épargne, avec gestion du déséquilibre des classes <strong>(PR‑AUC ≈ 67%)</strong>.</li>
+                    <li>Technologies : NiFi, PySpark, HDFS, Airflow, MLflow, LightGBM, Tomek Links, ENN, Optuna.</li>
                 </ul>
             </div>
             <div class="timeline-item">
@@ -1651,91 +1710,67 @@
 
             <!-- Projet 1 -->
             <div class="project-row">
+                <div class="project-img">
+                    <img src="img/elt.png" alt="Architecture - Pipeline ELT de Bout en Bout Cloud-Native">
+                </div>
                 <div class="project-info">
                     <h4 class="project-title">Pipeline ELT de Bout en Bout Cloud-Native</h4>
                     <p class="project-desc">Construction d'un pipeline évolutif de bout en bout transformant des données
                         brutes (+50k par jour) issues d'API REST publiques en ensembles de données prêts pour la BI à
-                        l'aide d'Airflow, dbt, Kafka et Snowflake.
-                        <br><br>
-                        Mise en œuvre d'une automatisation CI/CD rigoureuse
-                        avec GitHub Actions, conteneurs Docker et déploiement évolutif sur l'infrastructure cloud AWS
-                        EC2.
-                    </p>
+                        l'aide d'Airflow, dbt, Kafka et Snowflake. Mise en œuvre d'une automatisation CI/CD avec GitHub
+                        Actions et conteneurs Docker.</p>
                     <div class="tech-stack">
                         <span class="tech-badge">Airflow</span>
                         <span class="tech-badge">Kafka</span>
                         <span class="tech-badge">Snowflake</span>
                         <span class="tech-badge">dbt</span>
-                        <span class="tech-badge">AWS EC2</span>
-                        <span class="tech-badge">GitHub Actions</span>
-                        <span class="tech-badge">CI/CD</span>
                         <span class="tech-badge">Docker</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/elmerahykhadija/ELT-pipline-ticketmaster" target="_blank"
-                            class="project-link">Voir le code</a>
-                        <a href="#" class="project-link view-arch-btn" data-img="img/elt.png"
-                            data-title="Architecture - Pipeline ELT de Bout en Bout Cloud-Native">Voir
-                            l'architecture</a>
+                        <a href="https://github.com/elmerahykhadija/ELT-pipline-ticketmaster" target="_blank" class="project-link">Voir le code</a>
+                        <a href="#" class="project-link view-arch-btn" data-img="img/elt.png" data-title="Architecture - Pipeline ELT">Voir l'architecture</a>
                     </div>
                 </div>
             </div>
 
             <!-- Projet 2 -->
             <div class="project-row">
+                <div class="project-img">
+                    <img src="img/etl.png" alt="Architecture - Médaillon E-commerce">
+                </div>
                 <div class="project-info">
                     <h4 class="project-title">Architecture Médaillon E-commerce</h4>
-                    <p class="project-desc">Développement d'un pipeline ELT distribué et robuste pour transformer des
-                        données e-commerce à grande échelle (+200k enregistrements).
-                        <br><br>
-                        Conception d'une architecture
-                        Médaillon multicouche utilisant Airflow, Apache Spark, AWS S3 et Snowflake pour assurer un
-                        traitement des données évolutif et fiable.
-                    </p>
+                    <p class="project-desc">Pipeline ELT distribué pour transformer des données e-commerce (+200k enregistrements). Architecture Médaillon (Bronze/Silver/Gold) avec Airflow, Spark et Snowflake.</p>
                     <div class="tech-stack">
                         <span class="tech-badge">Airflow</span>
                         <span class="tech-badge">Spark</span>
                         <span class="tech-badge">AWS S3</span>
                         <span class="tech-badge">Snowflake</span>
-                        <span class="tech-badge">AWS EC2</span>
-                        <span class="tech-badge">Docker</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/elmerahykhadija/e-commerce-data-pipeline" target="_blank"
-                            class="project-link">Voir le code</a>
-                        <a href="#" class="project-link view-arch-btn" data-img="img/etl.png"
-                            data-title="Architecture - Architecture Médaillon E-commerce">Voir l'architecture</a>
+                        <a href="https://github.com/elmerahykhadija/e-commerce-data-pipeline" target="_blank" class="project-link">Voir le code</a>
+                        <a href="#" class="project-link view-arch-btn" data-img="img/etl.png" data-title="Architecture - Médaillon E-commerce">Voir l'architecture</a>
                     </div>
                 </div>
             </div>
 
             <!-- Projet 3 -->
             <div class="project-row">
+                <div class="project-img">
+                    <img src="img/streaming.png" alt="Architecture - Real-Time Streaming – Annonces Marocaines">
+                </div>
                 <div class="project-info">
                     <h4 class="project-title">Real-Time Streaming – Annonces Marocaines</h4>
-                    <p class="project-desc">Agrégation en temps réel d'annonces (Avito, MarocAnnonces) avec filtrage
-                        interactif.
-                        <br><br>
-                        implementation d'une interface streamlit pour l'affichage des annonces en temps réel en
-                        reduisant le temps de recherche de 70% par rapport aux sites d'annonces traditionnels.
-                        <br><br>
-                        Déployé sous Docker sur WSL Ubuntu.
-                    </p>
+                    <p class="project-desc">Agrégation en temps réel d'annonces (Avito, MarocAnnonces) avec filtrage interactif et interface Streamlit pour visualisation en temps réel.</p>
                     <div class="tech-stack">
                         <span class="tech-badge">Kafka</span>
                         <span class="tech-badge">Spark Streaming</span>
-                        <span class="tech-badge">MySQL</span>
                         <span class="tech-badge">Streamlit</span>
                         <span class="tech-badge">Docker</span>
-                        <span class="tech-badge">Web scraping</span>
-                        <span class="tech-badge">Beautiful Soup</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/elmerahykhadija/projet-annonces" target="_blank"
-                            class="project-link">Voir le code</a>
-                        <a href="#" class="project-link view-arch-btn" data-img="img/streaming.png"
-                            data-title="Architecture - Real-Time Streaming – Annonces Marocaines">Voir
-                            l'architecture</a>
+                        <a href="https://github.com/elmerahykhadija/projet-annonces" target="_blank" class="project-link">Voir le code</a>
+                        <a href="#" class="project-link view-arch-btn" data-img="img/streaming.png" data-title="Architecture - Real-Time Streaming">Voir l'architecture</a>
                     </div>
                 </div>
             </div>
@@ -1746,55 +1781,41 @@
 
             <!-- Projet 4 -->
             <div class="project-row">
+                <div class="project-img">
+                    <img src="img/mlops.png" alt="Architecture - Solution MLOps pour l'Analyse Prédictive RH">
+                </div>
                 <div class="project-info">
                     <h4 class="project-title">Solution MLOps pour l'Analyse Prédictive RH</h4>
-                    <p class="project-desc">Conception et déploiement d'un pipeline MLOps d'entreprise de bout en bout
-                        pour l'analyse prédictive et la simulation de rétention des talents.
-                        <br><br>
-                        Entraînement de modèles sur
-                        plus de 1 400 profils avec MLflow, et intégration de techniques d'explicabilité avec DiCE.
-                    </p>
+                    <p class="project-desc">Pipeline MLOps complet pour l'analyse prédictive des talents, entraîné sur +1 400 profils et intégré avec MLflow et outils d'explicabilité.</p>
                     <div class="tech-stack">
                         <span class="tech-badge">Prefect</span>
                         <span class="tech-badge">MLflow</span>
-                        <span class="tech-badge">Snowflake</span>
-                        <span class="tech-badge">Great Expectations</span>
-                        <span class="tech-badge">Evidently AI</span>
                         <span class="tech-badge">DiCE</span>
-                        <span class="tech-badge">Dash</span>
+                        <span class="tech-badge">Evidently</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/elmerahykhadija/hr-analytics-project" target="_blank"
-                            class="project-link">Voir le code</a>
-                        <a href="#" class="project-link view-arch-btn" data-img="img/mlops.png"
-                            data-title="Architecture - Solution MLOps pour l'Analyse Prédictive RH">Voir
-                            l'architecture</a>
+                        <a href="https://github.com/elmerahykhadija/hr-analytics-project" target="_blank" class="project-link">Voir le code</a>
+                        <a href="#" class="project-link view-arch-btn" data-img="img/mlops.png" data-title="Architecture - MLOps RH">Voir l'architecture</a>
                     </div>
                 </div>
             </div>
 
             <!-- Projet 5 -->
             <div class="project-row">
+                <div class="project-img">
+                    <img src="img/car.png" alt="Architecture - VisionPlate Pro">
+                </div>
                 <div class="project-info">
                     <h4 class="project-title">VisionPlate Pro - Reconnaissance de Plaques</h4>
-                    <p class="project-desc">Automatisation de la détection et reconnaissance des plaques
-                        d'immatriculation
-                        marocaines via IA.
-                        <br><br>
-                        Identification du numéro complet et détermination automatique de la région
-                        d'origine grâce au code de préfecture.
-                    </p>
+                    <p class="project-desc">Automatisation de la détection et reconnaissance des plaques d'immatriculation marocaines via IA (YOLO).</p>
                     <div class="tech-stack">
                         <span class="tech-badge">Python</span>
                         <span class="tech-badge">YOLO</span>
-                        <span class="tech-badge">Streamlit</span>
                         <span class="tech-badge">Computer Vision</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/elmerahykhadija/plaque_matricule_project" target="_blank"
-                            class="project-link">Voir le code</a>
-                        <a href="#" class="project-link view-arch-btn" data-img="img/car.png"
-                            data-title="Architecture - VisionPlate Pro">Voir l'architecture</a>
+                        <a href="https://github.com/elmerahykhadija/plaque_matricule_project" target="_blank" class="project-link">Voir le code</a>
+                        <a href="#" class="project-link view-arch-btn" data-img="img/car.png" data-title="Architecture - VisionPlate Pro">Voir l'architecture</a>
                     </div>
                 </div>
             </div>
@@ -1811,6 +1832,7 @@
             <div class="skill-category">
                 <h4>Data Engineering</h4>
                 <div class="skill-tags">
+                    <span class="skill-tag">Databricks</span>
                     <span class="skill-tag">Prefect</span>
                     <span class="skill-tag">Apache Airflow</span>
                     <span class="skill-tag">Apache Spark</span>
@@ -1818,7 +1840,7 @@
                     <span class="skill-tag">dbt</span>
                     <span class="skill-tag">Snowflake</span>
                     <span class="skill-tag">Hadoop</span>
-                    <span class="skill-tag">RabbitMQ</span>
+                    <span class="skill-tag">Nifi</span>
                     <span class="skill-tag">Great Expectations</span>
                     <span class="skill-tag">Web scraping</span>
                 </div>
@@ -1831,7 +1853,6 @@
                     <span class="skill-tag">Azure</span>
                     <span class="skill-tag">Docker</span>
                     <span class="skill-tag">CI/CD</span>
-                    <span class="skill-tag">GitHub Actions</span>
                     <span class="skill-tag">Linux</span>
                 </div>
             </div>
@@ -1872,7 +1893,6 @@
                     <span class="skill-tag">Chatbot</span>
                     <span class="skill-tag">Chatbot RAG</span>
                     <span class="skill-tag">Agentic AI</span>
-                    <span class="skill-tag">TensorFlow</span>
                     <span class="skill-tag">Convolutional Neural Networks (CNN)</span>
 
                 </div>
@@ -1939,7 +1959,19 @@
             <h2 class="section-title">Certifications</h2>
         </div>
         <div class="certs-grid">
+            <!-- 1. SQL (HackerRank) -->
+            <div class="cert-card">
+                <div>
+                    <h4>SQL – Niveau avancé</h4>
+                    <span class="cert-provider">HackerRank</span>
+                    <p style="font-size: 0.9rem;">Apprentissage du langage SQL niveau avancé pour l’analyse de données
+                        après la complétion de challenges HackerRank.</p>
+                </div>
+                <a href="https://www.hackerrank.com/certificates/iframe/ec5852bcdd1b" target="_blank"
+                    class="cert-link">Voir le certificat</a>
+            </div>
 
+            <!-- 2. Data Science & ML MasterClass (Udemy) -->
             <div class="cert-card">
                 <div>
                     <h4>Data Science & ML MasterClass</h4>
@@ -1950,6 +1982,29 @@
                     target="_blank" class="cert-link">Voir le certificat</a>
             </div>
 
+            <!-- 3. Introduction to Databricks (DataCamp) -->
+            <div class="cert-card">
+                <div>
+                    <h4>Introduction to Databricks</h4>
+                    <span class="cert-provider">DataCamp</span>
+                    <p style="font-size: 0.9rem;">Introduction à la plateforme Databricks et au traitement de données.</p>
+                </div>
+                <a href="https://www.datacamp.com/statement-of-accomplishment/course/bdec4ef7ce51b527d40f7d04c780e9fd0e8ca3d0?raw=1"
+                    target="_blank" class="cert-link">Voir le certificat</a>
+            </div>
+
+            <!-- 4. Understanding Microsoft Azure (DataCamp) -->
+            <div class="cert-card">
+                <div>
+                    <h4>Understanding Microsoft Azure</h4>
+                    <span class="cert-provider">DataCamp</span>
+                    <p style="font-size: 0.9rem;">Notions fondamentales d'Azure : services, stockage et solutions cloud.</p>
+                </div>
+                <a href="https://www.datacamp.com/statement-of-accomplishment/course/4e953e84e7741cae610e758ebf18fda2eefe7db8?raw=1"
+                    target="_blank" class="cert-link">Voir le certificat</a>
+            </div>
+
+            <!-- 5. Autres certifications -->
             <div class="cert-card">
                 <div>
                     <h4>Intro to Apache Airflow</h4>
@@ -1968,36 +2023,6 @@
                 </div>
                 <a href="https://www.datacamp.com/statement-of-accomplishment/course/c0d67a3f9261e55392edc12bafa77837a9f90e43?raw=1"
                     target="_blank" class="cert-link">Voir le certificat</a>
-            </div>
-            <div class="cert-card">
-                <div>
-                    <h4>SQL – Niveau avancé</h4>
-                    <span class="cert-provider">HackerRank</span>
-                    <p style="font-size: 0.9rem;">Apprentissage du langage SQL niveau avancé pour l’analyse de données
-                        après la complétion de challenges HackerRank.</p>
-                </div>
-                <a href="https://www.hackerrank.com/certificates/iframe/ec5852bcdd1b" target="_blank"
-                    class="cert-link">Voir le certificat</a>
-            </div>
-            <div class="cert-card">
-                <div>
-                    <h4>SQL – Niveau Intermédiaire</h4>
-                    <span class="cert-provider">HackerRank</span>
-                    <p style="font-size: 0.9rem;">Apprentissage langage SQL niveau intermédiaire pour l’analyse de
-                        données après la complétion de challenges HackerRank.</p>
-                </div>
-                <a href="https://www.hackerrank.com/certificates/a63f8f5c03cb" target="_blank" class="cert-link">Voir le
-                    certificat</a>
-            </div>
-            <div class="cert-card">
-                <div>
-                    <h4>SQL – Niveau Débutant</h4>
-                    <span class="cert-provider">HackerRank</span>
-                    <p style="font-size: 0.9rem;">Apprentissage des bases du langage SQL pour l’analyse de données après
-                        la complétion de challenges HackerRank.</p>
-                </div>
-                <a href="https://www.hackerrank.com/certificates/a74194e6a528" target="_blank" class="cert-link">Voir le
-                    certificat</a>
             </div>
         </div>
     </section>
